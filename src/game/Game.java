@@ -25,7 +25,6 @@ public class Game implements Runnable{
     }
 
     public void init(){
-
         this.display = new Display(title, width, height);
     }
 
