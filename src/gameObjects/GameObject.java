@@ -3,8 +3,8 @@ package gameObjects;
 import java.awt.*;
 
 public abstract class GameObject {
-    protected int x, y;
-    protected int velX, velY;
+    private int x, y;
+    private int velX, velY;
     protected int width;
     protected int height;
 

@@ -35,7 +35,7 @@ public class Player extends GameObject{
             if(i>=9){
                 i=0;
             }
-            this.x += this.velX;
+            this.setX(this.getX() + this.getVelX());
         }
         else if(isMovingLeft){
             this.setX(this.getX() - this.getVelX());
