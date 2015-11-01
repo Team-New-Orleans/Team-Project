@@ -16,11 +16,17 @@ public class Game implements Runnable{
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
     private Display display;
+
+    // handlers
+    private Handler handler;
     private InputHandler inputHandler;
 
     // images
     private BufferedImage background;
     private SpriteSheet sheet;
+    private final int w = 50;
+    private final int h = 110;
+    private int i = 0;// the part of the picture we are taking;
 
     private boolean isRunning;
     private Thread thread;
@@ -39,15 +45,18 @@ public class Game implements Runnable{
     public void init(){
         this.display = new Display(title, width, height);
         this.background = ImageLoader.loadImage("/background.jpg");
+
+        this.handler = new Handler();
         this.inputHandler = new InputHandler(this.display);
 
         Assets.init();
-        player = new Player();
+        this.handler.objects.add(new Player());
+
     }
 
     // tick wait for any updated and movement
     public void tick(){
-
+        handler.tick();
     }
 
     // after tick gives the update render draws it
@@ -55,7 +64,7 @@ public class Game implements Runnable{
         this.bufferStrategy = this.display.getCanvas().getBufferStrategy();
 
         if(this.bufferStrategy == null){
-            this.display.getCanvas().createBufferStrategy(3); // how many buffers to user
+            this.display.getCanvas().createBufferStrategy(2); // how many buffers to user
             return;
         }
         // instantiate the graphics.
@@ -65,7 +74,7 @@ public class Game implements Runnable{
         this.graphics.clearRect(0,0 , this.width, this.height);
         // drawing
         this.graphics.drawImage(this.background, 0, 0, this.width, this.height, null);
-        player.render(this.graphics);
+        handler.render(this.graphics);
         this.bufferStrategy.show();
         this.graphics.dispose();
     }

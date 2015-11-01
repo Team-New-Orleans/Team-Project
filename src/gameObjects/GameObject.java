@@ -11,10 +11,10 @@ public abstract class GameObject {
     private Rectangle spaceBoundaries;
 
     public GameObject(int x, int y, int width, int height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+        this.setX(x);
+        this.setY(y);
+        this.setWidth(width);;
+        this.setHeight(height);
         this.spaceBoundaries = new Rectangle(width, height);
     }
     public abstract void tick();
