@@ -17,10 +17,10 @@ public class InputHandler implements KeyListener{
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_UP) {
-            // to be implemented
+            Game.player.isMovingUp = true;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
-            // TODO
+            Game.player.isMovingDown = true;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
             Game.player.isMovingLeft = true;
@@ -42,10 +42,10 @@ public class InputHandler implements KeyListener{
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_UP) {
-            // TODO
+            Game.player.isMovingUp = false;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
-            // TODO
+            Game.player.isMovingDown = false;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
             Game.player.isMovingLeft = false;

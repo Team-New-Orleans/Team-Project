@@ -10,17 +10,17 @@ public class Player extends GameObject{
     private int health;
     private int attackDamage;
     int lastx = 20;
-    public boolean isMovingRight ;
-    public boolean isMovingLeft ;
+    public static boolean isMovingRight ;
+    public static boolean isMovingLeft ;
+    public static boolean isMovingUp;
+    public static boolean isMovingDown;
 
     public Player() {
         super(20, 428, 10, 20);
         this.health = 200;
         this.attackDamage = 150;
-        this.setVelX(1);
-        this.setVelY(1);
-        isMovingLeft = false;
-        isMovingRight = true;
+        this.setVelX(2);
+        this.setVelY(2);
     }
 
     @Override
@@ -37,8 +37,14 @@ public class Player extends GameObject{
             }
             this.x += this.velX;
         }
-        if(isMovingLeft){
+        else if(isMovingLeft){
             this.setX(this.getX() - this.getVelX());
+        }
+
+        if(isMovingUp){
+            this.setY(this.getY() - this.getVelY());
+        } else if(isMovingDown) {
+            this.setY(this.getY() + this.getVelY());
         }
     }
 
