@@ -17,14 +17,6 @@ public class InputHandler implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if (keyCode == KeyEvent.VK_UP) {
-            Player.isMovingUp = true;
-            Player.isIdle = false;
-        }
-        if (keyCode == KeyEvent.VK_DOWN) {
-            Player.isMovingDown = true;
-            Player.isIdle = false;
-        }
         if (keyCode == KeyEvent.VK_LEFT) {
             Player.isMovingLeft = true;
             Player.isIdle = false;
@@ -46,14 +38,6 @@ public class InputHandler implements KeyListener{
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if (keyCode == KeyEvent.VK_UP) {
-            Player.isMovingUp = false;
-            Player.isIdle = true;
-        }
-        if (keyCode == KeyEvent.VK_DOWN) {
-            Player.isMovingDown = false;
-            Player.isIdle = true;
-        }
         if (keyCode == KeyEvent.VK_LEFT) {
             Player.isMovingLeft = false;
             Player.isIdle = true;

@@ -40,6 +40,13 @@ public class Player extends GameObject{
             this.setX(this.getX() + this.getVelX());
         }
         else if(isMovingLeft){
+            if(lastx - this.getX() >= 10){
+                i++;
+                lastx = this.getX();
+            }
+            if(i>=9){
+                i=0;
+            }
             this.setX(this.getX() - this.getVelX());
         }
 
@@ -57,7 +64,7 @@ public class Player extends GameObject{
         }else if(isMovingRight){
             graphics.drawImage(Assets.player.crop(i * width, 0, width, height), this.getX(), this.getY(), null);
         }else if(isMovingLeft){
-            graphics.drawImage(Assets.reversedPlayer.crop(500 - (i + 1) * width, 0, width, height), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.reversedPlayer.crop(500 - (i + 1) * width+3, 0, width, height), this.getX(), this.getY(), null);
         }
     }
 }
