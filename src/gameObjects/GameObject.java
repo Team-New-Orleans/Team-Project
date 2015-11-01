@@ -13,7 +13,7 @@ public abstract class GameObject {
     public GameObject(int x, int y, int width, int height) {
         this.setX(x);
         this.setY(y);
-        this.setWidth(width);
+        this.setWidth(width);;
         this.setHeight(height);
         this.spaceBoundaries = new Rectangle(width, height);
     }

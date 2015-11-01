@@ -5,12 +5,14 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 
-    public static SpriteSheet player;
+    public static SpriteSheet player, reversedPlayer;
     //Loads every resource needed for the game
     public static void init() {
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/Player/soldier.png"));
+        SpriteSheet playerSheet = new SpriteSheet(ImageLoader.loadImage("/Player/player.png"));
+        SpriteSheet reversedPlayerSheet = new SpriteSheet(ImageLoader.loadImage("/Player/reversedPlayer.png"));
 
-        player = sheet;
+        player = playerSheet;
+        reversedPlayer = reversedPlayerSheet;
 
     }
 }

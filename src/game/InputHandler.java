@@ -19,15 +19,19 @@ public class InputHandler implements KeyListener{
 
         if (keyCode == KeyEvent.VK_UP) {
             Player.isMovingUp = true;
+            Player.isIdle = false;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
             Player.isMovingDown = true;
+            Player.isIdle = false;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
             Player.isMovingLeft = true;
+            Player.isIdle = false;
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
             Player.isMovingRight = true;
+            Player.isIdle = false;
         }
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
@@ -38,23 +42,25 @@ public class InputHandler implements KeyListener{
     public void keyTyped(KeyEvent e) {
 
     }
-    
     @Override
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_UP) {
-            //Game.player.isMovingUp = false;
             Player.isMovingUp = false;
+            Player.isIdle = true;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
             Player.isMovingDown = false;
+            Player.isIdle = true;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
             Player.isMovingLeft = false;
+            Player.isIdle = true;
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
             Player.isMovingRight = false;
+            Player.isIdle = true;
         }
     }
 }

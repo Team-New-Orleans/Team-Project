@@ -5,18 +5,20 @@ import java.awt.*;
 
 public class Player extends GameObject{
 
-    private static final int width = 512/9, height = 512/5;
-    private int i =0;
+    private static final int width = 50, height = 60;
+    private int i = 0;
     private int health;
     private int attackDamage;
     int lastx = 20;
-    public static boolean isMovingRight ;
-    public static boolean isMovingLeft ;
-    public static boolean isMovingUp;
-    public static boolean isMovingDown;
+    public static boolean
+            isMovingRight= false,
+            isMovingLeft = false,
+            isMovingUp = false,
+            isMovingDown = false,
+            isIdle = true;
 
     public Player() {
-        super(20, 428, 10, 20);
+        super(20, 470, width, height);
         this.health = 200;
         this.attackDamage = 150;
         this.setVelX(2);
@@ -41,15 +43,21 @@ public class Player extends GameObject{
             this.setX(this.getX() - this.getVelX());
         }
 
-        if(isMovingUp){
-            this.setY(this.getY() - this.getVelY());
-        } else if(isMovingDown) {
-            this.setY(this.getY() + this.getVelY());
-        }
+//        if(isMovingUp){
+//            this.setY(this.getY() - this.getVelY());
+//        } else if(isMovingDown) {
+//            this.setY(this.getY() + this.getVelY());
+//        }
     }
 
     @Override
     public void render(Graphics graphics) {
-        graphics.drawImage(Assets.player.crop(0+ i*width, 0, width, height), this.getX(), this.getY(), null);
+        if(isIdle){
+            graphics.drawImage(Assets.player.crop(0, 60, width, height), this.getX(), this.getY(), null);
+        }else if(isMovingRight){
+            graphics.drawImage(Assets.player.crop(i * width, 0, width, height), this.getX(), this.getY(), null);
+        }else if(isMovingLeft){
+            graphics.drawImage(Assets.reversedPlayer.crop(500 - (i + 1) * width, 0, width, height), this.getX(), this.getY(), null);
+        }
     }
 }
