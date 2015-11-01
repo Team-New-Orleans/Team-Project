@@ -1,8 +1,13 @@
 package game;
 import display.Display;
+import gameObjects.Player;
+import gfx.Assets;
+import gfx.ImageLoader;
+import gfx.SpriteSheet;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game implements Runnable{
 
@@ -11,9 +16,16 @@ public class Game implements Runnable{
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
     private Display display;
+    private InputHandler inputHandler;
+
+    // images
+    private BufferedImage background;
+    private SpriteSheet sheet;
 
     private boolean isRunning;
     private Thread thread;
+
+    public static Player player;
 
     public Game(String title, int width, int height) {
         this.width = width;
@@ -26,6 +38,11 @@ public class Game implements Runnable{
 
     public void init(){
         this.display = new Display(title, width, height);
+        this.background = ImageLoader.loadImage("/background.jpg");
+        this.inputHandler = new InputHandler(this.display);
+
+        Assets.init();
+        player = new Player();
     }
 
     // tick wait for any updated and movement
@@ -41,9 +58,14 @@ public class Game implements Runnable{
             this.display.getCanvas().createBufferStrategy(3); // how many buffers to user
             return;
         }
+        // instantiate the graphics.
         this.graphics = this.bufferStrategy.getDrawGraphics();
         // this coordinate system is like in the 4th quadrant. We are creating a rectangle with size 200 to 30 on X-100 and Y-100
-
+        // clearing the screen
+        this.graphics.clearRect(0,0 , this.width, this.height);
+        // drawing
+        this.graphics.drawImage(this.background, 0, 0, this.width, this.height, null);
+        player.render(this.graphics);
         this.bufferStrategy.show();
         this.graphics.dispose();
     }
