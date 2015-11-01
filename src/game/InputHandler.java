@@ -1,6 +1,7 @@
 package game;
 
 import display.Display;
+import gameObjects.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -17,16 +18,16 @@ public class InputHandler implements KeyListener{
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_UP) {
-            Game.player.isMovingUp = true;
+            Player.isMovingUp = true;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
-            Game.player.isMovingDown = true;
+            Player.isMovingDown = true;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
-            Game.player.isMovingLeft = true;
+            Player.isMovingLeft = true;
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
-            Game.player.isMovingRight = true;
+            Player.isMovingRight = true;
         }
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
@@ -37,21 +38,23 @@ public class InputHandler implements KeyListener{
     public void keyTyped(KeyEvent e) {
 
     }
+    
     @Override
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_UP) {
-            Game.player.isMovingUp = false;
+            //Game.player.isMovingUp = false;
+            Player.isMovingUp = false;
         }
         if (keyCode == KeyEvent.VK_DOWN) {
-            Game.player.isMovingDown = false;
+            Player.isMovingDown = false;
         }
         if (keyCode == KeyEvent.VK_LEFT) {
-            Game.player.isMovingLeft = false;
+            Player.isMovingLeft = false;
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
-            Game.player.isMovingRight = false;
+            Player.isMovingRight = false;
         }
     }
 }
