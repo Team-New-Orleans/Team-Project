@@ -27,6 +27,8 @@ public class Player extends GameObject{
 
     @Override
     public void tick(){
+        this.getBoundingBox().setBounds(this.getX(), this.getY(), width, height);
+
         // TODO up and down
         if(isMovingRight){
 
@@ -59,6 +61,9 @@ public class Player extends GameObject{
 
     @Override
     public void render(Graphics graphics) {
+
+        //Just to see the player Rectangle
+        graphics.drawRect(this.getBoundingBox().x, this.getBoundingBox().y, this.getBoundingBox().width, this.getBoundingBox().height);
         if(isIdle){
             graphics.drawImage(Assets.player.crop(0, 60, width, height), this.getX(), this.getY(), null);
         }else if(isMovingRight){

@@ -8,14 +8,14 @@ public abstract class GameObject {
     protected int width;
     protected int height;
 
-    private Rectangle spaceBoundaries;
+    private Rectangle boundingBox;
 
     public GameObject(int x, int y, int width, int height) {
         this.setX(x);
         this.setY(y);
         this.setWidth(width);;
         this.setHeight(height);
-        this.spaceBoundaries = new Rectangle(width, height);
+        this.boundingBox = new Rectangle(this.x,this.y,width, height);
     }
     public abstract void tick();
     public abstract void render(Graphics graphics);
@@ -69,7 +69,11 @@ public abstract class GameObject {
         this.height = height;
     }
 
-    public Rectangle getSpaceBoundaries() {
-        return spaceBoundaries;
+    public Rectangle getBoundingBox() {
+        return boundingBox;
+    }
+
+    public void setBoundingBox(Rectangle boundingBox) {
+        this.boundingBox = boundingBox;
     }
 }
