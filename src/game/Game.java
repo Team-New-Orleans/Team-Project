@@ -1,5 +1,6 @@
 package game;
 import display.Display;
+import gameObjects.FlyingDragon;
 import gameObjects.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
@@ -29,6 +30,7 @@ public class Game implements Runnable{
     private Thread thread;
 
     public static Player player;
+    public static FlyingDragon flyingDragon;
 
     public Game(String title, int width, int height) {
         this.width = width;
@@ -48,6 +50,7 @@ public class Game implements Runnable{
 
         Assets.init();
         Handler.objects.add(new Player());
+        Handler.objects.add(new FlyingDragon(0, 30 ,true));
 
     }
 
