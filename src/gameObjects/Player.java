@@ -9,13 +9,15 @@ public class Player extends GameObject{
     private int i = 0;
     private int health;
     private int attackDamage;
-    int lastx = 20;
+    int lastDrawnPosition = 20;
     public static boolean
             isMovingRight= false,
             isMovingLeft = false,
             isMovingUp = false,
             isMovingDown = false,
-            isIdle = true;
+            isIdleLeft = false,
+            isIdleRight = true;
+
 
     public Player() {
         super(20, 470, width, height);
@@ -28,28 +30,34 @@ public class Player extends GameObject{
     @Override
     public void tick(){
         this.getBoundingBox().setBounds(this.getX(), this.getY(), width, height);
-
-        // TODO up and down
         if(isMovingRight){
 
-            if(this.getX() - lastx >= 10){
+            if(this.getX() - lastDrawnPosition >= 10){
                 i++;
-                lastx = this.getX();
+                lastDrawnPosition = this.getX();
             }
             if(i>=9){
                 i=0;
             }
-            this.setX(this.getX() + this.getVelX());
-        }
-        else if(isMovingLeft){
-            if(lastx - this.getX() >= 10){
+            if(this.getX() >= 752){
+
+            } else {
+                this.setX(this.getX() + this.getVelX());
+            }
+        } else if(isMovingLeft){
+            if(lastDrawnPosition - this.getX() >= 10){
                 i++;
-                lastx = this.getX();
+                lastDrawnPosition = this.getX();
             }
             if(i>=9){
                 i=0;
             }
-            this.setX(this.getX() - this.getVelX());
+            if(this.getX() <= 4){
+
+            } else {
+                this.setX(this.getX() - this.getVelX());
+            }
+
         }
 
 //        if(isMovingUp){
@@ -64,9 +72,11 @@ public class Player extends GameObject{
 
         //Just to see the player Rectangle
         graphics.drawRect(this.getBoundingBox().x, this.getBoundingBox().y, this.getBoundingBox().width, this.getBoundingBox().height);
-        if(isIdle){
+        if(isIdleRight){
             graphics.drawImage(Assets.player.crop(0, 60, width, height), this.getX(), this.getY(), null);
-        }else if(isMovingRight){
+        } else if(isIdleLeft){
+            graphics.drawImage(Assets.reversedPlayer.crop(450, 60, width, height), this.getX(), this.getY(), null);
+        } else if(isMovingRight){
             graphics.drawImage(Assets.player.crop(i * width, 0, width, height), this.getX(), this.getY(), null);
         }else if(isMovingLeft){
             graphics.drawImage(Assets.reversedPlayer.crop(500 - (i + 1) * width+3, 0, width, height), this.getX(), this.getY(), null);

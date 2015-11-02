@@ -5,6 +5,7 @@ import gameObjects.Player;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.regex.Pattern;
 
 public class InputHandler implements KeyListener{
 
@@ -19,11 +20,19 @@ public class InputHandler implements KeyListener{
 
         if (keyCode == KeyEvent.VK_LEFT) {
             Player.isMovingLeft = true;
-            Player.isIdle = false;
+            Player.isIdleRight = false;
+            Player.isIdleLeft = false;
+            Player.isMovingRight = false;
+
+
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
             Player.isMovingRight = true;
-            Player.isIdle = false;
+            Player.isMovingLeft = false;
+            Player.isIdleRight = false;
+            Player.isIdleLeft = false;
+
+
         }
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
@@ -39,12 +48,18 @@ public class InputHandler implements KeyListener{
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_LEFT) {
+            Player.isIdleLeft = true;
             Player.isMovingLeft = false;
-            Player.isIdle = true;
+            Player.isIdleRight = false;
+            Player.isMovingRight = false;
+
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
+            Player.isIdleRight = true;
             Player.isMovingRight = false;
-            Player.isIdle = true;
+            Player.isMovingLeft = false;
+            Player.isIdleLeft = false;
+
         }
     }
 }

@@ -24,9 +24,6 @@ public class Game implements Runnable{
     // images
     private BufferedImage background;
     private SpriteSheet sheet;
-    private final int w = 50;
-    private final int h = 110;
-    private int i = 0;// the part of the picture we are taking;
 
     private boolean isRunning;
     private Thread thread;
