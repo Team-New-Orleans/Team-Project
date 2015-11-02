@@ -47,7 +47,7 @@ public class Game implements Runnable{
         this.inputHandler = new InputHandler(this.display);
 
         Assets.init();
-        this.handler.objects.add(new Player());
+        Handler.objects.add(new Player());
 
     }
 

@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * Created by Simooo on 1.11.2015 ã..
  */
 public class Handler {
-    LinkedList<GameObject> objects = new LinkedList<>();
+    public static LinkedList<GameObject> objects = new LinkedList<>();
 
     public void tick(){
         for (int i = 0; i < objects.size(); i++) {

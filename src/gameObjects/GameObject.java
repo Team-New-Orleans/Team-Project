@@ -1,6 +1,7 @@
 package gameObjects;
 
 import java.awt.*;
+import java.util.LinkedList;
 
 public abstract class GameObject {
     private int x, y;
@@ -19,6 +20,14 @@ public abstract class GameObject {
     }
     public abstract void tick();
     public abstract void render(Graphics graphics);
+    //getID will be unique for the different types of object: Player: 1, Bullet: 2, Enemy: 3
+    public abstract int getID();
+    //Checks if the current object is colliding with something
+    public abstract boolean Collision(LinkedList<GameObject> list);
+
+    public boolean intersects(GameObject other) {
+        return this.getBoundingBox().contains(other.getBoundingBox());
+    }
 
     public int getVelX() {
         return velX;
@@ -71,9 +80,5 @@ public abstract class GameObject {
 
     public Rectangle getBoundingBox() {
         return boundingBox;
-    }
-
-    public void setBoundingBox(Rectangle boundingBox) {
-        this.boundingBox = boundingBox;
     }
 }
