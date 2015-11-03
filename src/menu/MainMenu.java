@@ -1,43 +1,38 @@
 package menu;
 
-import display.Display;
-import game.Game;
 import gfx.ImageLoader;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class MainMenu implements ActionListener {
-    private Display display;
-
     private int height = 600;
     private int width = 800;
-    private int buttonHeight = 30;
+    private int buttonHeight = 40;
     private int buttonWidth = 220;
 
     private BufferedImage background;
-    private Game game;
     private Canvas canvas;
     private JFrame jframe = new JFrame();
-    private Graphics graphics;
-    private BufferStrategy bufferStrategy;
 
     JButton start = new JButton("New game");
     JButton exit = new JButton ("Exit");
-    JButton settings = new JButton ("Settings");
     JButton leaderboard = new JButton ("Leaderboard");
+    JButton settings = new JButton ("Settings");
 
     public MainMenu(){
-
-        Dimension dimension = new Dimension(800,600);
-
         this.jframe = new JFrame("Main Menu");
+        setBackground();
+        setFrame();
+        createButtons();
+    }
+
+    private void setFrame(){
+        Dimension dimension = new Dimension(800,600);
         this.jframe.setSize(800,600);
         this.jframe.setVisible(true);
         this.jframe.setResizable(false);
@@ -48,74 +43,63 @@ public class MainMenu implements ActionListener {
         this.canvas.setMaximumSize(dimension);
         this.canvas.setMinimumSize(dimension);
         this.canvas.setPreferredSize(dimension);
+    }
 
-        //this.jframe.getContentPane().setBackground( Color.green );
+    private void setBackground(){
         this.background = ImageLoader.loadImage("/background.jpg");
+        this.jframe.setContentPane(new JLabel(new ImageIcon(background)));
+        this.jframe.pack();
+    }
 
+    private void createButtons(){
         start.addActionListener(this);
-        settings.addActionListener(this);
         leaderboard.addActionListener(this);
+        settings.addActionListener(this);
         exit.addActionListener(this);
 
+        start.setForeground(Color.WHITE);
+        leaderboard.setForeground(Color.WHITE);
+        settings.setForeground(Color.WHITE);
+        exit.setForeground(Color.WHITE);
+
         JPanel panel = new JPanel();
-        start.setBounds((width-buttonWidth)/2, 150, buttonWidth, buttonHeight);
-        settings.setBounds((width-buttonWidth)/2, 250, buttonWidth, buttonHeight);
-        leaderboard.setBounds((width-buttonWidth)/2, 350, buttonWidth, buttonHeight);
-        exit.setBounds((width-buttonWidth)/2, 450, buttonWidth, buttonHeight);
+        start.setBounds((width-buttonWidth)/2, 100, buttonWidth, buttonHeight);
+        leaderboard.setBounds((width-buttonWidth)/2, 220, buttonWidth, buttonHeight);
+        settings.setBounds((width-buttonWidth)/2, 340, buttonWidth, buttonHeight);
+        exit.setBounds((width-buttonWidth)/2, 460, buttonWidth, buttonHeight);
 
         //start.setOpaque(false);
         start.setContentAreaFilled(false);
         //start.setBorderPainted(false);
-        settings.setContentAreaFilled(false);
+
         leaderboard.setContentAreaFilled(false);
+        settings.setContentAreaFilled(false);
         exit.setContentAreaFilled(false);
 
         panel.setBounds(800, 800, 200, 100);
         panel.add(start);
-        panel.add(settings);
         panel.add(leaderboard);
+        panel.add(settings);
         panel.add(exit);
 
         jframe.add(start);
-        jframe.add(settings);
         jframe.add(leaderboard);
+        jframe.add(settings);
         jframe.add(exit);
-
-
-        this.jframe.add(this.canvas);
-        this.jframe.pack();
-
-        final BufferedImage image = ImageLoader.loadImage("/background.jpg");
-
-        JPanel pane = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.drawImage(image, 0, 0, null);
-            }
-        };
-
-//        this.background = ImageLoader.loadImage("/background.jpg");
-//
-//        this.bufferStrategy = canvas.getBufferStrategy();
-//
-//        if(this.bufferStrategy == null){
-//            canvas.createBufferStrategy(2); // how many buffers to user
-//            return;
-//        }
-//        this.graphics = this.bufferStrategy.getDrawGraphics();
-//        this.graphics.drawRect(100,100,200,200);
-//        this.graphics.drawImage(this.background, 0, 0, 800,600, null);
-////
-////        this.bufferStrategy.show();
-////        this.graphics.dispose();
     }
 
     public void actionPerformed(ActionEvent ae) {
         String comStr = ae.getActionCommand();
-        if (comStr.equals("START GAME")){
+        if (comStr.equals("New game")){
             game.Game game = new game.Game("Java Workshop", 800, 600);
             game.start();
+            jframe.dispose();
+        } else if(comStr.equals("Settings")){
+            //go to settings
+        } else if(comStr.equals("Leaderboard")){
+            // Go to leaderboard
+        } else if(comStr.equals("Exit")){
+            System.exit(0);
         }
         System.out.println(comStr + " Selected");
     }
