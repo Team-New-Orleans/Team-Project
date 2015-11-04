@@ -8,7 +8,8 @@ public abstract class GameObject {
     private int velX, velY;
     protected int width;
     protected int height;
-
+    protected int health;
+    protected int attackDamage;
     private Rectangle boundingBox;
 
     public GameObject(int x, int y, int width, int height) {
@@ -26,7 +27,7 @@ public abstract class GameObject {
     public abstract boolean Collision(LinkedList<GameObject> list);
 
     public boolean intersects(GameObject other) {
-        return this.getBoundingBox().contains(other.getBoundingBox());
+        return this.getBoundingBox().intersects(other.getBoundingBox());
     }
 
     public int getVelX() {
