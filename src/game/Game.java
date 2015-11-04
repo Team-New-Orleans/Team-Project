@@ -50,7 +50,7 @@ public class Game implements Runnable{
 
         Assets.init();
         Handler.objects.add(new Player());
-        Handler.objects.add(new FlyingDragon(0, 30 ,true));
+        Handler.objects.add(new FlyingDragon(800, 30 ,false));
 
     }
 

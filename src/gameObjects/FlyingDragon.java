@@ -33,30 +33,20 @@ public class FlyingDragon extends GameObject{
     public void tick() {
         if(toRight) {
             this.setX(this.getX() + getVelX());
-            if (! isDown){
-                i++;
-            } else {
-                i--;
-            }
-
-            if (i >= 24) {
-                isDown = true;
-            } else if (i <= 0) {
-                isDown = false;
-            }
         } else {
             this.setX(this.getX() - getVelX());
-            if (! isDown){
-                i++;
-            } else {
-                i--;
-            }
+        }
 
-            if (i >= 24) {
-                isDown = true;
-            } else if (i <= 1) {
-                isDown = false;
-            }
+        if (! isDown){
+            i++;
+        } else {
+            i--;
+        }
+
+        if (i >= 24) {
+            isDown = true;
+        } else if (i <= 0) {
+            isDown = false;
         }
 
         this.getBoundingBox().setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
@@ -64,22 +54,10 @@ public class FlyingDragon extends GameObject{
 
     @Override
     public void render(Graphics graphics) {
-        switch (i / 5) {
-            case 0:
-                graphics.drawImage(Assets.flyingDragon.crop(185, 0, 182, 171), this.getX(), this.getY(), null);
-                break;
-            case 1:
-                graphics.drawImage(Assets.flyingDragon.crop(0, 245, 181, 154), this.getX(), this.getY(), null);
-                break;
-            case 2:
-                graphics.drawImage(Assets.flyingDragon.crop(0, 122, 183, 122), this.getX(), this.getY(), null);
-                break;
-            case 3:
-                graphics.drawImage(Assets.flyingDragon.crop(0, 0, 184, 121), this.getX(), this.getY(), null);
-                break;
-            case 4:
-                graphics.drawImage(Assets.flyingDragon.crop(184, 172, 177, 117), this.getX(), this.getY(), null);
-                break;
+        if (toRight) {
+            graphics.drawImage(Assets.flyingDragon.crop(i / 5 * 219, 0, 219, 185), this.getX(), this.getY(), null);
+        } else {
+            graphics.drawImage(Assets.flyingDragonReversed.crop(i / 5 * 219, 0, 219, 185), this.getX(), this.getY(), null);
         }
     }
 
