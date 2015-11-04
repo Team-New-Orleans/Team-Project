@@ -1,5 +1,6 @@
 package game;
 import display.Display;
+import gameObjects.Dinosaur;
 import gameObjects.FlyingDragon;
 import gameObjects.Player;
 import gfx.Assets;
@@ -30,7 +31,10 @@ public class Game implements Runnable{
     private Thread thread;
 
     public static Player player;
-    public static FlyingDragon flyingDragon;
+
+    public static FlyingDragon flyingDragon; //TO BE REMOVED
+    public static Dinosaur dinosaur; //TO BE REMOVED
+
 
     public Game(String title, int width, int height) {
         this.width = width;
@@ -51,6 +55,7 @@ public class Game implements Runnable{
         Assets.init();
         Handler.objects.add(new Player());
         Handler.objects.add(new FlyingDragon(800, 30 ,false));
+        Handler.objects.add(new Dinosaur(800, 440 ,false));
 
     }
 
