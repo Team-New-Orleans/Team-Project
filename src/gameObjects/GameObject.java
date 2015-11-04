@@ -62,7 +62,6 @@ public abstract class GameObject {
         this.velY = velY;
     }
 
-
     public int getWidth() {
         return width;
     }
@@ -82,13 +81,5 @@ public abstract class GameObject {
     public Rectangle getBoundingBox() {
         return boundingBox;
     }
-
-    /*
-    public void chase(GameObject gameobject) {
-        if (this.getX() <= gameobject.getX()) {
-
-        }
-    }
-    */
 
 }

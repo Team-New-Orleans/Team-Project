@@ -2,6 +2,7 @@ package game;
 import display.Display;
 import gameObjects.Dinosaur;
 import gameObjects.FlyingDragon;
+import gameObjects.Octopus;
 import gameObjects.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
@@ -32,10 +33,6 @@ public class Game implements Runnable{
 
     public static Player player;
 
-    public static FlyingDragon flyingDragon; //TO BE REMOVED
-    public static Dinosaur dinosaur; //TO BE REMOVED
-
-
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
@@ -53,9 +50,13 @@ public class Game implements Runnable{
         this.inputHandler = new InputHandler(this.display);
 
         Assets.init();
-        Handler.objects.add(new Player());
+        Player player = new Player();
+        Handler.objects.add(player);
+
         Handler.objects.add(new FlyingDragon(800, 30 ,false));
-        Handler.objects.add(new Dinosaur(800, 440 ,false));
+        Handler.objects.add(new Dinosaur(800, 420 , false, player));
+        Handler.objects.add(new Octopus(0, 465 , true, player));
+
 
     }
 

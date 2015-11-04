@@ -1,5 +1,6 @@
 package game;
 
+import display.Display;
 import gameObjects.GameObject;
 
 import java.awt.*;
@@ -15,6 +16,11 @@ public class Handler {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             tempObject.tick();
+
+            // Removes a game object which has left the canvas.
+            if ((tempObject.getX() + tempObject.getWidth() * 2  <= 0 ) || (tempObject.getX() >= 800 + tempObject.getWidth() * 2)) {
+                objects.remove(i);
+            }
         }
     }
     public void render(Graphics graphics){
