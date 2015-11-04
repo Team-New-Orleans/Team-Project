@@ -82,12 +82,8 @@ public abstract class GameObject {
         return boundingBox;
     }
 
-    /*
-    public void chase(GameObject gameobject) {
-        if (this.getX() <= gameobject.getX()) {
 
-        }
-    }
-    */
+
+
 
 }

@@ -11,24 +11,28 @@ import java.util.LinkedList;
 
 
 public class Dinosaur extends GameObject{
-    private boolean toRight; // Dragon's moving direction
-
+    private boolean toRight; // Enemy's moving direction
+    private static final int width = 142, height = 114;
     private int health; // Dinosaur's health
     private int attackDamage; // Dinosaur's damage power
 
+    // Chasing target
+    public GameObject target;
+
     private int sprite = 1;
 
-    public Dinosaur(int x, int y, boolean toRight) {
-        super(x, y, 142, 118); // To be changed!!
-        this.toRight = toRight;
+    public Dinosaur(int x, int y, boolean startPos, GameObject target) {
+        super(x, y, width, height);
+        this.target = target;
         this.setVelX(2);
-
+        this.toRight = startPos; // Starting position
         this.health = 50; // Dinosaur's health
         this.attackDamage = 10; // Dinosaurs's damage power
     }
 
     @Override
     public void tick() {
+        toRight = Chase(target);
         if(toRight) {
             this.setX(this.getX() + getVelX());
             sprite++;
@@ -47,16 +51,16 @@ public class Dinosaur extends GameObject{
     @Override
     public void render(Graphics graphics) {
         if (toRight) {
-            graphics.drawImage(Assets.dinosaur.crop(sprite / 10 * 142, 0, 142, 114), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.dinosaur.crop(sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);
         } else {
-            graphics.drawImage(Assets.dinosaurReversed.crop(sprite / 10 * 142, 0, 142, 114), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.dinosaurReversed.crop(sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);
         }
     }
 
 
     @Override
     public int getID() {
-        return 3;
+        return 4;
     }
 
     @Override
@@ -70,4 +74,17 @@ public class Dinosaur extends GameObject{
         return false;
     }
 
+    public boolean Chase(GameObject gameobject) {
+        boolean moveToRight = true;
+
+        // If enemy is on the right side of player - moving to left => isRight = false;
+
+            if (this.getX() <= gameobject.getX() - 100) {
+                moveToRight = true;
+            } else {
+                moveToRight = false;
+
+            }
+        return  moveToRight;
+    }
 }

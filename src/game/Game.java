@@ -53,9 +53,11 @@ public class Game implements Runnable{
         this.inputHandler = new InputHandler(this.display);
 
         Assets.init();
-        Handler.objects.add(new Player());
+        Player player = new Player();
+        Handler.objects.add(player);
+
         Handler.objects.add(new FlyingDragon(800, 30 ,false));
-        Handler.objects.add(new Dinosaur(800, 440 ,false));
+        Handler.objects.add(new Dinosaur(0, 420 , true, player));
 
     }
 

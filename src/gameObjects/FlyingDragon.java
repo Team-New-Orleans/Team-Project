@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class FlyingDragon extends GameObject{
     private boolean toRight; // Dragon's moving direction
-
+    private static final int width = 219, height = 185;
     private int health; // Dragon's health
     private int attackDamage; // Dragon's damage power
 
@@ -21,7 +21,7 @@ public class FlyingDragon extends GameObject{
     private int i = 1;
 
     public FlyingDragon(int x, int y, boolean toRight) {
-        super(x, y, 20, 40); // To be changed!!
+        super(x, y, width, height);
         this.toRight = toRight;
         this.setVelX(5);
 
@@ -55,9 +55,9 @@ public class FlyingDragon extends GameObject{
     @Override
     public void render(Graphics graphics) {
         if (toRight) {
-            graphics.drawImage(Assets.flyingDragon.crop(i / 5 * 219, 0, 219, 185), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.flyingDragon.crop(i / 5 * width, 0, width, height), this.getX(), this.getY(), null);
         } else {
-            graphics.drawImage(Assets.flyingDragonReversed.crop(i / 5 * 219, 0, 219, 185), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.flyingDragonReversed.crop(i / 5 * width, 0, width, height), this.getX(), this.getY(), null);
         }
     }
 
