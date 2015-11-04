@@ -32,7 +32,7 @@ public class Dinosaur extends GameObject{
 
     @Override
     public void tick() {
-        toRight = Chase(target);
+        toRight = Chase(toRight, target);
         if(toRight) {
             this.setX(this.getX() + getVelX());
             sprite++;
@@ -74,17 +74,24 @@ public class Dinosaur extends GameObject{
         return false;
     }
 
-    public boolean Chase(GameObject gameobject) {
-        boolean moveToRight = true;
+    public boolean Chase(boolean currentDirection, GameObject gameobject) {
+        boolean moveToRight;
 
-        // If enemy is on the right side of player - moving to left => isRight = false;
-
-            if (this.getX() <= gameobject.getX() - 100) {
+        // If enemy is on the right side of player - moving to left => toRight = false;
+        if (currentDirection == true) {
+            if (this.getX() >= gameobject.getX() + (gameobject.getWidth() * 2)) {
+                moveToRight = false;
+            } else {
+                moveToRight = true;
+            }
+        } else {
+            if (this.getX() + this.getWidth() + gameobject.getWidth() <= gameobject.getX()) {
                 moveToRight = true;
             } else {
                 moveToRight = false;
-
             }
+        }
+
         return  moveToRight;
     }
 }

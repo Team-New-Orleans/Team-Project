@@ -16,7 +16,9 @@ public class Handler {
         for (int i = 0; i < objects.size(); i++) {
             GameObject tempObject = objects.get(i);
             tempObject.tick();
-            if ((tempObject.getX() + tempObject.getWidth() <= 0 ) || (tempObject.getX() >= 800)) {
+
+            // Removes a game object which has left the canvas.
+            if ((tempObject.getX() + tempObject.getWidth() * 2  <= 0 ) || (tempObject.getX() + tempObject.getWidth() * 2 >= 800)) {
                 objects.remove(i);
             }
         }

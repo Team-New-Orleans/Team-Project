@@ -32,10 +32,6 @@ public class Game implements Runnable{
 
     public static Player player;
 
-    public static FlyingDragon flyingDragon; //TO BE REMOVED
-    public static Dinosaur dinosaur; //TO BE REMOVED
-
-
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
