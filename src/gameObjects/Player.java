@@ -88,7 +88,8 @@ public class Player extends GameObject{
     @Override
     public void render(Graphics graphics) {
         //Just to see the player Rectangle
-        graphics.drawRect(this.getBoundingBox().x, this.getBoundingBox().y, this.getBoundingBox().width, this.getBoundingBox().height);
+        //graphics.drawRect(this.getBoundingBox().x, this.getBoundingBox().y, this.getBoundingBox().width, this.getBoundingBox().height);
+
         if(hasJumped && isTurnedRight){
                 graphics.drawImage(Assets.player.crop(0, 120, width, height), this.getX(), this.getY(), null);
         }

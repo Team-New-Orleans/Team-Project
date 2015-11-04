@@ -2,6 +2,7 @@ package game;
 import display.Display;
 import gameObjects.Dinosaur;
 import gameObjects.FlyingDragon;
+import gameObjects.Octopus;
 import gameObjects.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
@@ -53,7 +54,9 @@ public class Game implements Runnable{
         Handler.objects.add(player);
 
         Handler.objects.add(new FlyingDragon(800, 30 ,false));
-        Handler.objects.add(new Dinosaur(0, 420 , true, player));
+        Handler.objects.add(new Dinosaur(800, 420 , false, player));
+        Handler.objects.add(new Octopus(0, 465 , true, player));
+
 
     }
 
