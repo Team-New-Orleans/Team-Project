@@ -44,8 +44,9 @@ public class Player extends GameObject{
             if(i>=9){
                 i=0;
             }
-            if(this.getX() >= 752){
-
+            if(this.getX() >= 800){
+                this.setX(0);
+                lastDrawnPosition = 20;
             } else {
                 this.setX(this.getX() + this.getVelX());
             }
@@ -57,8 +58,9 @@ public class Player extends GameObject{
             if(i>=9){
                 i=0;
             }
-            if(this.getX() <= 4){
-
+            if(this.getX() <= 0){
+                this.setX(800);
+                lastDrawnPosition = this.getX() - 20;
             } else {
                 this.setX(this.getX() - this.getVelX());
             }

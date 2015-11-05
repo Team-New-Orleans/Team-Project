@@ -23,7 +23,7 @@ public class Game implements Runnable{
     // handlers
     private Handler handler;
     private InputHandler inputHandler;
-
+    private EnemyGenerator enemyGenerator;
     // images
     private BufferedImage background;
     private SpriteSheet sheet;
@@ -54,15 +54,13 @@ public class Game implements Runnable{
         Assets.init();
         Player player = new Player();
         Handler.objects.add(player);
-
-        Handler.objects.add(new FlyingDragon(800, 30 ,false));
-        Handler.objects.add(new Dinosaur(800, 420 , false, player));
-        Handler.objects.add(new Octopus(800, 465 , true, player));
+        this.enemyGenerator = new EnemyGenerator(player);
 
     }
 
     // tick wait for any updated and movement
     public void tick(){
+        this.enemyGenerator.generatingEnemy();
         handler.tick();
     }
 
