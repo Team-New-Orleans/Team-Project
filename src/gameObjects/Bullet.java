@@ -39,7 +39,6 @@ public class Bullet extends GameObject{
     public boolean Collision(LinkedList<GameObject> list) {
         for (GameObject obj : list) {
             if(this.intersects(obj) && obj.getID() != 3){
-
                 //Must implement a Hit function in GameObject
                 //obj.Hit();
             }
