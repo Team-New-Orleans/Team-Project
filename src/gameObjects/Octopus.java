@@ -11,9 +11,10 @@ import java.util.LinkedList;
 
 public class Octopus extends GameObject{
     private boolean toRight; // Enemy's moving direction
-    private boolean attack;
+    private boolean attacksRight;
+    private boolean attacksLeft;
 
-    private static final int width = 59, height = 71, widthAttack = 60;
+    private static final int width = 59, height = 71, widthAttack = 60, heightAttack = 76;
     private int health = 30; // Enemy's health
     private int attackDamage = 5; // Enemy's damage power
 
@@ -31,10 +32,25 @@ public class Octopus extends GameObject{
 
     @Override
     public void tick() {
-        attack = Attack(target);
         toRight = Chase(toRight, target);
+        attacksRight = AttackOnRight(toRight, target);
+        attacksLeft = AttackOnLeft(toRight, target);
 
-        if(toRight) {
+        if (attacksRight) {
+            hit++;
+            if (hit >= 19) {
+                this.setX(this.getX() + getVelX());
+                hit = 1;
+                toRight = false; // Changes direction when hit.
+            }
+        } else if (attacksLeft) {
+            hit++;
+            if (hit >= 19) {
+                this.setX(this.getX() - getVelX());
+                hit = 1;
+                toRight = true; // Changes direction when hit.
+            }
+        } else if(toRight) {
             this.setX(this.getX() + getVelX());
             sprite++;
         } else {
@@ -51,8 +67,8 @@ public class Octopus extends GameObject{
 
     @Override
     public void render(Graphics graphics) {
-        if (attack){
-            graphics.drawImage(Assets.octopusAttack.crop(sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);
+        if (attacksLeft || attacksRight){
+            graphics.drawImage(Assets.octopusAttack.crop(0, hit / 5 * heightAttack, width, height), this.getX(), this.getY(), null);
         }else if (toRight) {
             graphics.drawImage(Assets.octopus.crop(sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);
         } else {
@@ -101,24 +117,31 @@ public class Octopus extends GameObject{
         return  moveToRight;
     }
 
-    private boolean Attack(GameObject player) {
-        boolean Attack = false;
+
+    private boolean AttackOnRight(boolean currentDirectionIsRight, GameObject player) {
+        boolean AttackOnRight = false;
 
         // Enemy attacks if it is on specific distance from the player
-        if (attack){
-            hit++;
-            if (hit >= 39) {
-
-                hit = 1;
+        if (currentDirectionIsRight == true) {
+            if (player.getX() == this.getX() + this.getWidthAttack() - 15 && player.getY() == 470 ) { // Attacks only the player is on the ground. OVERLAPPING
+                AttackOnRight = true;
             }
-        }else if (player.getX() == this.getX() + this.getWidthAttack()) { // Overlapping for better visualisation??
-            Attack = true;
-            setVelX(10);
-        } else if (player.getX() + player.getWidth()  ==  this.getX()) {
-            Attack = true;
-            setVelX(10);
         }
 
-        return Attack;
+        return AttackOnRight;
+    }
+
+    private boolean AttackOnLeft(boolean currentDirectionIsRight, GameObject player) {
+        boolean AttackOnLeft = false;
+
+        // Enemy attacks if it is on specific distance from the player
+        if (currentDirectionIsRight == false) {
+            if (player.getX() + player.getWidth()  ==  this.getX() + 15 && player.getY() == 470) { // Attacks only the player is on the ground. . OVERLAPPING
+                AttackOnLeft = true;
+            }
+        }
+
+
+        return AttackOnLeft;
     }
 }

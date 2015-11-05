@@ -49,7 +49,7 @@ public class Dinosaur extends GameObject{
                 this.setX(this.getX() - getVelX());
                 hit = 1;
                 toRight = true; // Changes direction when hit.
-                            }
+            }
         } else if(toRight) {
             this.setX(this.getX() + getVelX());
             sprite++;
@@ -124,7 +124,7 @@ public class Dinosaur extends GameObject{
 
         // Enemy attacks if it is on specific distance from the player
         if (currentDirectionIsRight == true) {
-            if (player.getX() == this.getX() + this.getWidthAttack()  ) { // Overlapping for better visualisation??
+            if (player.getX() == this.getX() + this.getWidthAttack() - 15 && player.getY() == 470 ) { // Attacks only the player is on the ground. OVERLAPPING
                 AttackOnRight = true;
             }
         }
@@ -137,7 +137,7 @@ public class Dinosaur extends GameObject{
 
         // Enemy attacks if it is on specific distance from the player
         if (currentDirectionIsRight == false) {
-            if (player.getX() + player.getWidth()  ==  this.getX()) { // Overlapping for better visualisation??
+            if (player.getX() + player.getWidth()  ==  this.getX() + 15 && player.getY() == 470) { // Attacks only the player is on the ground. . OVERLAPPING
                 AttackOnLeft = true;
             }
         }
