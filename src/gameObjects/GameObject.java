@@ -80,5 +80,8 @@ public abstract class GameObject {
     public Rectangle getBoundingBox() {
         return boundingBox;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 4757575... Dinosaur - new enemy added
 }
