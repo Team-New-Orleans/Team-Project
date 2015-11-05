@@ -9,7 +9,7 @@ public class Assets {
     public static SpriteSheet player, reversedPlayer, bullet,
             flyingDragon, flyingDragonReversed,
             dinosaur, dinosaurReversed, dinosaurAttack, dinosaurAttackReversed,
-            octopus, octopusReversed;
+            octopus, octopusReversed, octopusAttack;
 
     //Loads every resource needed for the game
     public static void init() {
@@ -29,8 +29,6 @@ public class Assets {
 
         octopus = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus.png"));
         octopusReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus-reversed.png"));
-
-        flyingDragon = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon.png"));
-        flyingDragonReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon-reversed.png"));
+        octopusAttack = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus-attack.png"));
     }
 }
