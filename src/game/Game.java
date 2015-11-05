@@ -1,5 +1,6 @@
 package game;
 import display.Display;
+import gameObjects.Dinosaur;
 import gameObjects.FlyingDragon;
 import gameObjects.Octopus;
 import gameObjects.Player;
@@ -31,10 +32,8 @@ public class Game implements Runnable{
     private Thread thread;
 
     public static Player player;
-<<<<<<< HEAD
-=======
+
     public static FlyingDragon flyingDragon;
->>>>>>> parent of 4757575... Dinosaur - new enemy added
 
     public Game(String title, int width, int height) {
         this.width = width;
@@ -57,12 +56,8 @@ public class Game implements Runnable{
         Handler.objects.add(player);
 
         Handler.objects.add(new FlyingDragon(800, 30 ,false));
-<<<<<<< HEAD
         Handler.objects.add(new Dinosaur(800, 420 , false, player));
         Handler.objects.add(new Octopus(0, 465 , true, player));
-
-=======
->>>>>>> parent of 4757575... Dinosaur - new enemy added
 
     }
 

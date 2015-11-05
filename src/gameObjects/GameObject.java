@@ -16,12 +16,16 @@ public abstract class GameObject {
         this.setY(y);
         this.setWidth(width);
         this.setHeight(height);
-        this.boundingBox = new Rectangle(this.x,this.y,width, height);
+        this.boundingBox = new Rectangle(this.x, this.y, width, height);
     }
+
     public abstract void tick();
+
     public abstract void render(Graphics graphics);
+
     //getID will be unique for the different types of object: Player: 1, Bullet: 2, Enemy: 3
     public abstract int getID();
+
     //Checks if the current object is colliding with something
     public abstract boolean Collision(LinkedList<GameObject> list);
 
@@ -80,8 +84,4 @@ public abstract class GameObject {
     public Rectangle getBoundingBox() {
         return boundingBox;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 4757575... Dinosaur - new enemy added
 }
