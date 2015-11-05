@@ -21,6 +21,8 @@ public class Handler {
             if ((tempObject.getX() + tempObject.getWidth() * 2  <= 0 ) || (tempObject.getX() >= 800 + tempObject.getWidth() * 2)) {
                 objects.remove(i);
             }
+            if(tempObject.getHealth() <= 0)
+                objects.remove(i);
         }
     }
     public void render(Graphics graphics){

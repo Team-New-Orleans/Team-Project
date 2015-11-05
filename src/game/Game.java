@@ -57,7 +57,7 @@ public class Game implements Runnable{
 
         Handler.objects.add(new FlyingDragon(800, 30 ,false));
         Handler.objects.add(new Dinosaur(800, 420 , false, player));
-        Handler.objects.add(new Octopus(0, 465 , true, player));
+        Handler.objects.add(new Octopus(800, 465 , true, player));
 
     }
 

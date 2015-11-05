@@ -15,8 +15,6 @@ public class Dinosaur extends GameObject{
     private boolean attacksLeft;
 
     private static final int width = 142, height = 114, widthAttack = 134;
-    private int health = 50; // Dinosaur's health
-    private int attackDamage = 10; // Dinosaur's damage power
 
     // Chasing target
     private GameObject target;
@@ -28,6 +26,8 @@ public class Dinosaur extends GameObject{
         this.target = target;
         this.setVelX(2);
         this.toRight = startPos; // Starting position
+        this.setHealth(50);
+        this.setAttackDamage(10);
     }
 
     @Override
@@ -81,7 +81,12 @@ public class Dinosaur extends GameObject{
 
     @Override
     public int getID() {
-        return 4;
+        return 3;
+    }
+
+    @Override
+    public void Hit(int value) {
+        this.setHealth(this.getHealth() - value);
     }
 
     @Override

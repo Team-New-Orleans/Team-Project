@@ -8,6 +8,8 @@ public abstract class GameObject {
     private int velX, velY;
     protected int width;
     protected int height;
+    private int health;
+    private int attackDamage;
 
     private Rectangle boundingBox;
 
@@ -29,8 +31,11 @@ public abstract class GameObject {
     //Checks if the current object is colliding with something
     public abstract boolean Collision(LinkedList<GameObject> list);
 
+    //Hits the object if a bullet is intersecting it
+    public abstract void Hit(int value);
+
     public boolean intersects(GameObject other) {
-        return this.getBoundingBox().contains(other.getBoundingBox());
+        return this.getBoundingBox().intersects(other.getBoundingBox());
     }
 
     public int getVelX() {
@@ -79,6 +84,22 @@ public abstract class GameObject {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getAttackDamage() {
+        return attackDamage;
+    }
+
+    public void setAttackDamage(int attackDamage) {
+        this.attackDamage = attackDamage;
     }
 
     public Rectangle getBoundingBox() {

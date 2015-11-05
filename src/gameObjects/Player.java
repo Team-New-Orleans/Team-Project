@@ -9,7 +9,6 @@ public class Player extends GameObject{
     private static double gravity = 20;
     private static final int width = 50, height = 60;
     private int i = 0;
-    private int health;
     private int attackDamage;
     int lastDrawnPosition = 20;
     public static boolean
@@ -24,10 +23,11 @@ public class Player extends GameObject{
 
     public Player() {
         super(20, 470, width, height);
-        this.health = 200;
         this.attackDamage = 150;
         this.setVelX(3);
         this.setVelY(2);
+        this.setHealth(100);
+        this.setAttackDamage(0);
     }
 
     @Override
@@ -67,9 +67,10 @@ public class Player extends GameObject{
         if(hasJumped){
             this.setY(this.getY()  - (int)gravity);
                 gravity -= 0.5;
-            if(this.getY() == 470){
+            if(this.getY() >= 470){
                 hasJumped = false;
                 gravity = 20;
+                this.setY(470);
             }
         }
 
@@ -117,10 +118,17 @@ public class Player extends GameObject{
     }
 
     @Override
+    public void Hit(int value) {
+        this.setHealth(this.getHealth() - value);
+    }
+
+    @Override
     public boolean Collision(LinkedList<GameObject> list) {
         for (GameObject obj : list) {
-            if(this.intersects(obj) && obj.getID() != 1)
+            if(this.intersects(obj) && obj.getID() == 3) {
+                this.Hit(obj.getAttackDamage());
                 return true;
+            }
         }
         return false;
     }

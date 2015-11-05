@@ -15,8 +15,6 @@ public class Octopus extends GameObject{
     private boolean attacksLeft;
 
     private static final int width = 59, height = 71, widthAttack = 60, heightAttack = 76;
-    private int health = 30; // Enemy's health
-    private int attackDamage = 5; // Enemy's damage power
 
     // Chasing target
     public GameObject target;
@@ -28,6 +26,8 @@ public class Octopus extends GameObject{
         this.target = target;
         this.setVelX(1);
         this.toRight = startPos; // Starting position
+        this.setHealth(100);
+        this.setAttackDamage(5);
     }
 
     @Override
@@ -79,7 +79,12 @@ public class Octopus extends GameObject{
 
     @Override
     public int getID() {
-        return 4;
+        return 3;
+    }
+
+    @Override
+    public void Hit(int value) {
+        this.setHealth(this.getHealth() - value);
     }
 
     @Override
