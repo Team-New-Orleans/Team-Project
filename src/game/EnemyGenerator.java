@@ -53,9 +53,6 @@ public class EnemyGenerator {
             } catch (IllegalArgumentException bound){
                 System.out.println(bound.getMessage());
             }
-
-
-
         }
     }
     private int getCountOfEnemies(){
