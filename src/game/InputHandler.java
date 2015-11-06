@@ -25,8 +25,7 @@ public class InputHandler implements KeyListener{
             Player.isMovingLeft = true;
             Player.isIdle = false;
             Player.isTurnedLeft = true;
-        }
-        else if (keyCode == KeyEvent.VK_RIGHT) {
+        } else if (keyCode == KeyEvent.VK_RIGHT) {
             Player.isTurnedLeft = false;
             Player.isMovingRight = true;
             Player.isTurnedRight = true;
@@ -35,13 +34,13 @@ public class InputHandler implements KeyListener{
         if (keyCode == KeyEvent.VK_ESCAPE) {
             System.exit(0);
         }
-        if(keyCode == KeyEvent.VK_UP){
+        if (keyCode == KeyEvent.VK_UP) {
             Player.hasJumped = true;
         }
-        if(keyCode == KeyEvent.VK_SPACE){
+        if (keyCode == KeyEvent.VK_SPACE) {
             now = System.nanoTime();
             long delta = now - lastTime;
-            if(Math.abs(delta) >= 400000000){
+            if (Math.abs(delta) >= 400000000) {
                 Player.isShooting = true;
                 lastTime = now;
             }

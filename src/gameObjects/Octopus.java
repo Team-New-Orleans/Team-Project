@@ -27,7 +27,7 @@ public class Octopus extends GameObject{
         this.setVelX(1);
         this.toRight = startPos; // Starting position
         this.setHealth(60);
-        this.setAttackDamage(5);
+        this.setAttackDamage(1);
     }
 
     @Override

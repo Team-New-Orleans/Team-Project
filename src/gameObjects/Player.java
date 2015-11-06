@@ -26,14 +26,14 @@ public class Player extends GameObject{
         this.attackDamage = 150;
         this.setVelX(3);
         this.setVelY(2);
-        this.setHealth(1000);
+        this.setHealth(200);
         this.setAttackDamage(0);
     }
 
     @Override
     public void tick(){
-        int tempX = this.getX();
-        int tempY = this.getY();
+       int tempX = this.getX();
+       // int tempY = this.getY();
 
         if(isMovingRight){
 
@@ -81,11 +81,11 @@ public class Player extends GameObject{
             isShooting = false;
         }
 
-        if(this.collision(Handler.objects)){
-            this.setX(tempX);
-            this.setY(tempY);
+      if(this.collision(Handler.objects)){
+           this.setX(tempX);
+     //     this.setY(tempY);
 
-        }
+       }
         this.getBoundingBox().setBounds(this.getX(), this.getY(), width, height);
     }
 
