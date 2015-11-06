@@ -61,6 +61,7 @@ public class Game implements Runnable{
     public void tick(){
         this.enemyGenerator.generatingEnemy();
         handler.tick();
+        this.hud.tick();
     }
 
     // after tick gives the update render draws it
