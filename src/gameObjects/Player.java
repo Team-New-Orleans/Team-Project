@@ -26,7 +26,7 @@ public class Player extends GameObject{
         this.attackDamage = 150;
         this.setVelX(3);
         this.setVelY(2);
-        this.setHealth(100);
+        this.setHealth(1000);
         this.setAttackDamage(0);
     }
 
@@ -81,7 +81,7 @@ public class Player extends GameObject{
             isShooting = false;
         }
 
-        if(this.Collision(Handler.objects)){
+        if(this.collision(Handler.objects)){
             this.setX(tempX);
             this.setY(tempY);
         }
@@ -124,10 +124,9 @@ public class Player extends GameObject{
         this.setHealth(this.getHealth() - value);
     }
 
-    @Override
-    public boolean Collision(LinkedList<GameObject> list) {
+    private boolean collision(LinkedList<GameObject> list) {
         for (GameObject obj : list) {
-            if(this.intersects(obj) && obj.getID() == 3) {
+            if(this.intersects(obj) && obj.getID() != 2 && obj.getID() != 1) {
                 this.Hit(obj.getAttackDamage());
                 return true;
             }
@@ -138,8 +137,7 @@ public class Player extends GameObject{
     public void shoot(){
         if(isTurnedRight){
             Handler.objects.add(new Bullet(this.getX() + 51, this.getY() + 9, true));
-        }else
+        } else
             Handler.objects.add(new Bullet(this.getX() - 1, this.getY() + 9, false));
-
     }
 }

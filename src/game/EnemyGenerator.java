@@ -5,6 +5,7 @@ import gameObjects.*;
 import java.util.Random;
 
 public class EnemyGenerator {
+
     private Random randomNumberGenerator;
     private Player player;
 
@@ -21,13 +22,16 @@ public class EnemyGenerator {
             Handler.objects.add(new FlyingDragon(800, 30 ,false));
         }
         if(getCountOfEnemies() < 3){
-            int randomEnemy = randomNumberGenerator.nextInt(2);
+
             int randomWidth = randomNumberGenerator.nextInt(800);
             if(this.player.getX() < 100){
-                randomWidth = this.player.getX() + 300;
-            }
-            else {
-                if (randomWidth > this.player.getX() - 70 && randomWidth < this.player.getX() + 70) {
+                randomNumberGenerator.ints(250, 800 - this.player.getX());
+                randomWidth = this.player.getX() + randomNumberGenerator.nextInt();
+            } else if(this.player.getX() > 700){
+                randomNumberGenerator.ints(250, 800 - this.player.getX());
+                randomWidth = this.player.getX() - randomNumberGenerator.nextInt();
+            } else {
+                if (randomWidth > this.player.getX() - 60 && randomWidth < this.player.getX() + 60) {
                     if (randomWidth < player.getX()) {
                         randomWidth -= 100;
                     } else {
@@ -35,8 +39,7 @@ public class EnemyGenerator {
                     }
                 }
             }
-                if(randomEnemy == 0){
-
+                if(randomNumberGenerator.nextBoolean()){
                     Handler.objects.add(new Dinosaur(randomWidth, 420 , false, this.player));
                 } else {
                     Handler.objects.add(new Octopus(randomWidth, 465 , true, this.player));

@@ -19,13 +19,11 @@ public class Bullet extends GameObject{
 
     @Override
     public void tick() {
-        if(toRight)
-            this.setX(this.getX() + getVelX());
-        else
-            this.setX(this.getX() - getVelX());
+        if(toRight) this.setX(this.getX() + getVelX());
+        else this.setX(this.getX() - getVelX());
 
         this.getBoundingBox().setBounds(this.getX(), this.getY(), this.getWidth(), this.getHeight());
-        this.Collision(Handler.objects);
+        this.collision(Handler.objects);
     }
 
     @Override
@@ -39,8 +37,8 @@ public class Bullet extends GameObject{
         return 2;
     }
 
-    @Override
-    public boolean Collision(LinkedList<GameObject> list) {
+
+    private boolean collision(LinkedList<GameObject> list) {
         for (GameObject obj : list) {
             if(this.intersects(obj) && obj.getID() != 2){
                 obj.Hit(this.getAttackDamage());

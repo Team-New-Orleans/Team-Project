@@ -87,16 +87,16 @@ public class Octopus extends GameObject{
         this.setHealth(this.getHealth() - value);
     }
 
-    @Override
-    public boolean Collision(LinkedList<GameObject> list) {
-        for (GameObject obj : list) {
-            if(this.intersects(obj) && obj.getID() != 3){
+    //@Override
+    //public boolean Collision(LinkedList<GameObject> list) {
+      //  for (GameObject obj : list) {
+        //    if(this.intersects(obj) && obj.getID() != 3){
                 //Must implement a Hit function in GameObject
                 //obj.Hit();
-            }
-        }
-        return false;
-    }
+          //  }
+        //}
+        //return false;
+    //}
 
     public int getWidthAttack() {
         return widthAttack;

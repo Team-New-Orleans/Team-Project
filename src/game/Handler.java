@@ -1,6 +1,7 @@
 package game;
 
 import display.Display;
+import gameObjects.Bullet;
 import gameObjects.GameObject;
 
 import java.awt.*;
@@ -29,4 +30,5 @@ public class Handler {
             tempObject.render(graphics);
         }
     }
+
 }

@@ -29,7 +29,7 @@ public abstract class GameObject {
     public abstract int getID();
 
     //Checks if the current object is colliding with something
-    public abstract boolean Collision(LinkedList<GameObject> list);
+   // public abstract boolean Collision(LinkedList<GameObject> list);
 
     //Hits the object if a bullet is intersecting it
     public abstract void Hit(int value);
