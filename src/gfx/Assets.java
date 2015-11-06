@@ -8,7 +8,7 @@ public class Assets {
 
     public static SpriteSheet player, reversedPlayer, bullet,
             flyingDragon, flyingDragonReversed,
-            dinosaur, dinosaurReversed, dinosaurAttack, dinosaurAttackReversed, dinosaurDeath,
+            dinosaur, dinosaurReversed, dinosaurAttack, dinosaurAttackReversed, dinosaurDeath, dinosaurDeathReversed,
 
             octopus, octopusReversed, octopusAttack;
 
@@ -28,6 +28,7 @@ public class Assets {
         dinosaurAttack = new SpriteSheet(ImageLoader.loadImage("/Enemies/dinosaur-attack.png"));
         dinosaurAttackReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/dinosaur-attack-reversed.png"));
         dinosaurDeath = new SpriteSheet(ImageLoader.loadImage("/Enemies/dinosaur-death.png"));
+        dinosaurDeathReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/dinosaur-death-reversed.png"));
 
         octopus = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus.png"));
         octopusReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus-reversed.png"));

@@ -22,7 +22,7 @@ public class FlyingDragon extends GameObject{
         super(x, y, width, height);
         this.toRight = toRight;
         this.setVelX(2);
-
+        this.setIsDead(false);
         this.setHealth(100);
         this.setAttackDamage(10);
     }

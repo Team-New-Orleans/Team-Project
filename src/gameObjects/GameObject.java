@@ -108,4 +108,8 @@ public abstract class GameObject {
     }
 
     public boolean getIsDead() {return isDead ;}
+
+    public void setIsDead (boolean isDead) {
+        this.isDead = isDead;
+    }
 }

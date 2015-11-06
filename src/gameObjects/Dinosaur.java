@@ -14,8 +14,6 @@ public class Dinosaur extends GameObject{
     private boolean attacksRight;
     private boolean attacksLeft;
 
-    private boolean isDead = false;
-
     private static final int width = 142, height = 114, widthAttack = 134;
 
     // Chasing target
@@ -30,6 +28,7 @@ public class Dinosaur extends GameObject{
         this.toRight = startPos; // Starting position
         this.setHealth(40);
         this.setAttackDamage(1);
+        this.setIsDead(false);
     }
 
     @Override
@@ -42,7 +41,8 @@ public class Dinosaur extends GameObject{
             death++;
             this.setAttackDamage(0);
             if (death >= 79) {
-                isDead = true;
+                this.setIsDead(true);
+                death = 1;
             }
         } else if (attacksRight) {
             hit++;
@@ -76,7 +76,11 @@ public class Dinosaur extends GameObject{
     @Override
     public void render(Graphics graphics) {
         if (this.getHealth() <= 0) {
-            graphics.drawImage(Assets.dinosaurDeath.crop(death / 40 * 130, 0, 130, 125), this.getX(), this.getY(), null);
+            if (toRight){
+                graphics.drawImage(Assets.dinosaurDeath.crop(death / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
+            } else {
+                graphics.drawImage(Assets.dinosaurDeathReversed.crop((39 - death) / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
+            }
         } else if (attacksRight) {
             graphics.drawImage(Assets.dinosaurAttack.crop(hit / 20 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);
         } else if (attacksLeft) {
