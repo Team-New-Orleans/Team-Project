@@ -25,6 +25,9 @@ public class MainMenu implements ActionListener {
     private JButton tutorial = new JButton ("Tutorial");
     private JPanel panel = new JPanel();
 
+    private final int fontSize = 14;
+    private final String fontType = "Times New Roman";
+
     public MainMenu(){
         this.jframe = new JFrame("Main Menu");
         setBackground();
@@ -85,6 +88,11 @@ public class MainMenu implements ActionListener {
         tutorial.setContentAreaFilled(false);
         exit.setContentAreaFilled(false);
 
+        start.setFont(new Font(fontType, Font.PLAIN, fontSize));
+        tutorial.setFont(new Font(fontType, Font.PLAIN, fontSize));
+        leaderboard.setFont(new Font(fontType, Font.PLAIN, fontSize));
+        exit.setFont(new Font(fontType, Font.PLAIN, fontSize));
+
         panel.setBounds(800, 800, 200, 100);
         panel.add(start);
         panel.add(leaderboard);
@@ -104,13 +112,14 @@ public class MainMenu implements ActionListener {
     public void setLabel(JLabel l){
         l.setForeground(Color.white);
         l.setBounds(200, 70, 400, 300);
+        l.setFont(new Font(fontType, Font.PLAIN, fontSize+6));
         panel.add(l);
         jframe.add(l);
     }
 
     public void setLifeBar(JLabel l){
         l.setBackground(Color.GREEN);
-        l.setBounds(350,300,200,30);
+        l.setBounds(350,290,200,30);
         l.setOpaque(true);
         panel.add(l);
         jframe.add(l);
@@ -126,6 +135,8 @@ public class MainMenu implements ActionListener {
         b.setForeground(Color.CYAN);
         b.setBounds((width-buttonWidth)/2, buttonHeight, buttonWidth, buttonHeight);
         b.setContentAreaFilled(false);
+        b.setFont(new Font(fontType, Font.PLAIN, fontSize));
+
         panel.add(b);
         jframe.add(b);
     }
