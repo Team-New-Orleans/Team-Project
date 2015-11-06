@@ -19,29 +19,32 @@ public class EnemyGenerator {
 
     public void generatingEnemy(){
         if(Handler.objects.stream().noneMatch(enemy-> enemy instanceof FlyingDragon)){
-            Handler.objects.add(new FlyingDragon(800, 30 ,false));
+            if(randomNumberGenerator.nextBoolean()){
+                Handler.objects.add(new FlyingDragon(800, 30 ,false));
+            } else {
+                Handler.objects.add(new FlyingDragon(0, 30 ,true));
+            }
+
         }
-        if(getCountOfEnemies() < 3){
+        if(getCountOfEnemies() < 4){
             try {
                 int randomWidth;
                 if(this.player.getX() < 100){
-                    randomNumberGenerator.ints(250, 800 - this.player.getX());
-                    randomWidth = this.player.getX() + randomNumberGenerator.nextInt();
+                    randomWidth = randomNumberGenerator.ints(250, 700).findFirst().getAsInt();
                 } else if(this.player.getX() > 700){
-                    randomNumberGenerator.ints(250, 800 - this.player.getX());
-                    randomWidth = this.player.getX() - randomNumberGenerator.nextInt();
+
+                    randomWidth =randomNumberGenerator.ints(0, 600).findFirst().getAsInt();
                 } else {
                     if(randomNumberGenerator.nextBoolean()){
                         randomWidth = randomNumberGenerator.nextInt(400);
                     } else {
-                        randomNumberGenerator.ints(400, 800);
-                        randomWidth = randomNumberGenerator.nextInt();
+                        randomWidth = randomNumberGenerator.ints(400, 800).findFirst().getAsInt();
                     }
                     if (randomWidth > this.player.getX() - 80 && randomWidth < this.player.getX() + 80) {
                         if (randomWidth <= player.getX()) {
-                            randomWidth -= 120;
+                            randomWidth -= 220;
                         } else {
-                            randomWidth += 120;
+                            randomWidth += 220;
                         }
                     }
                 }
