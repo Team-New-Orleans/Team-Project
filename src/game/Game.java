@@ -1,5 +1,6 @@
 package game;
 import display.Display;
+import display.HUD;
 import gameObjects.Dinosaur;
 import gameObjects.FlyingDragon;
 import gameObjects.Octopus;
@@ -31,17 +32,14 @@ public class Game implements Runnable{
     private boolean isRunning;
     private Thread thread;
 
+    private HUD hud;
     public static Player player;
-
-    public static FlyingDragon flyingDragon;
 
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
         this.title = title;
         this.isRunning = false;
-
-
     }
 
     public void init(){
@@ -52,9 +50,10 @@ public class Game implements Runnable{
         this.inputHandler = new InputHandler(this.display);
 
         Assets.init();
-        Player player = new Player();
+        player = new Player();
+        this.hud = new HUD();
         Handler.objects.add(player);
-        this.enemyGenerator = new EnemyGenerator(player);
+        this.enemyGenerator = new EnemyGenerator();
 
     }
 
@@ -79,7 +78,10 @@ public class Game implements Runnable{
         this.graphics.clearRect(0,0 , this.width, this.height);
         // drawing
         this.graphics.drawImage(this.background, 0, 0, this.width, this.height, null);
+       // rendering every single object
         handler.render(this.graphics);
+        this.hud.render(this.graphics);
+
         this.bufferStrategy.show();
         this.graphics.dispose();
     }

@@ -2,6 +2,8 @@ package display;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Calendar;
 
 public class Display extends Canvas {
@@ -28,9 +30,11 @@ public class Display extends Canvas {
 
         this.jframe = new JFrame(this.title);
         this.jframe.setSize(this.width, this.height);
+
+        this.jframe.setFocusable(true);
         this.jframe.setVisible(true);
         this.jframe.setResizable(false);
-        this.jframe.setFocusable(true);
+
         this.jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.jframe.setLocationRelativeTo(null);
         // Canvas we do not want it to be resizable because this will mess our resolution
@@ -42,6 +46,7 @@ public class Display extends Canvas {
         // we are giving our Jframe the canvas
         this.jframe.add(this.canvas);
         this.jframe.pack(); // fitting the subcomponents
+
     }
 
     public Canvas getCanvas() {

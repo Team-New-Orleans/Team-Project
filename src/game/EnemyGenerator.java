@@ -7,13 +7,12 @@ import java.util.Random;
 public class EnemyGenerator {
 
     private Random randomNumberGenerator;
-    private Player player;
 
-    public EnemyGenerator(Player player) {
-        this.player = player;
+    public EnemyGenerator() {
+
         Handler.objects.add(new FlyingDragon(800, 30 ,false));
-        Handler.objects.add(new Dinosaur(800, 420 , false, this.player));
-        Handler.objects.add(new Octopus(800, 465 , true, this.player));
+        Handler.objects.add(new Dinosaur(800, 420 , false, Game.player));
+        Handler.objects.add(new Octopus(800, 465 , true, Game.player));
         randomNumberGenerator = new Random();
     }
 
@@ -29,9 +28,9 @@ public class EnemyGenerator {
         if(getCountOfEnemies() < 4){
             try {
                 int randomWidth;
-                if(this.player.getX() < 100){
+                if(Game.player.getX() < 100){
                     randomWidth = randomNumberGenerator.ints(250, 700).findFirst().getAsInt();
-                } else if(this.player.getX() > 700){
+                } else if(Game.player.getX() > 700){
 
                     randomWidth =randomNumberGenerator.ints(0, 600).findFirst().getAsInt();
                 } else {
@@ -40,8 +39,8 @@ public class EnemyGenerator {
                     } else {
                         randomWidth = randomNumberGenerator.ints(400, 800).findFirst().getAsInt();
                     }
-                    if (randomWidth > this.player.getX() - 80 && randomWidth < this.player.getX() + 80) {
-                        if (randomWidth <= player.getX()) {
+                    if (randomWidth > Game.player.getX() - 80 && randomWidth < Game.player.getX() + 80) {
+                        if (randomWidth <= Game.player.getX()) {
                             randomWidth -= 220;
                         } else {
                             randomWidth += 220;
@@ -49,9 +48,9 @@ public class EnemyGenerator {
                     }
                 }
                 if(randomNumberGenerator.nextBoolean()){
-                    Handler.objects.add(new Dinosaur(randomWidth, 420 , false, this.player));
+                    Handler.objects.add(new Dinosaur(randomWidth, 420 , false, Game.player));
                 } else {
-                    Handler.objects.add(new Octopus(randomWidth, 465 , true, this.player));
+                    Handler.objects.add(new Octopus(randomWidth, 465 , true, Game.player));
                 }
             } catch (IllegalArgumentException bound){
                 System.out.println(bound.getMessage());
