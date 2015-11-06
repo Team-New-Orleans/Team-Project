@@ -10,6 +10,7 @@ public abstract class GameObject {
     protected int height;
     private int health;
     private int attackDamage;
+    private boolean isDead;
 
     private Rectangle boundingBox;
 
@@ -105,4 +106,6 @@ public abstract class GameObject {
     public Rectangle getBoundingBox() {
         return boundingBox;
     }
+
+    public boolean getIsDead() {return isDead ;}
 }

@@ -14,12 +14,14 @@ public class Dinosaur extends GameObject{
     private boolean attacksRight;
     private boolean attacksLeft;
 
+    private boolean isDead = false;
+
     private static final int width = 142, height = 114, widthAttack = 134;
 
     // Chasing target
     private GameObject target;
 
-    private int sprite = 1, hit = 1;
+    private int sprite = 1, hit = 1, death = 1;
 
     public Dinosaur(int x, int y, boolean startPos, GameObject target) {
         super(x, y, width, height);
@@ -32,13 +34,19 @@ public class Dinosaur extends GameObject{
 
     @Override
     public void tick() {
-        toRight = Chase(toRight, target);
-        attacksRight = AttackOnRight(toRight, target);
-        attacksLeft = AttackOnLeft(toRight, target);
+        toRight = chase(toRight, target);
+        attacksRight = attackOnRight(toRight, target);
+        attacksLeft = attackOnLeft(toRight, target);
 
-        if (attacksRight) {
+        if (this.getHealth() <= 0) {
+            death++;
+            this.setAttackDamage(0);
+            if (death >= 79) {
+                isDead = true;
+            }
+        } else if (attacksRight) {
             hit++;
-            if (hit >= 39) {
+            if (hit >= 79) {
                 this.setX(this.getX() + getVelX());
                 hit = 1;
                 toRight = false; // Changes direction when hit.
@@ -67,7 +75,9 @@ public class Dinosaur extends GameObject{
 
     @Override
     public void render(Graphics graphics) {
-        if (attacksRight) {
+        if (this.getHealth() <= 0) {
+            graphics.drawImage(Assets.dinosaurDeath.crop(death / 40 * 130, 0, 130, 125), this.getX(), this.getY(), null);
+        } else if (attacksRight) {
             graphics.drawImage(Assets.dinosaurAttack.crop(hit / 20 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);
         } else if (attacksLeft) {
             graphics.drawImage(Assets.dinosaurAttackReversed.crop(hit / 20 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);
@@ -103,7 +113,8 @@ public class Dinosaur extends GameObject{
     private int getWidthAttack() {
         return widthAttack;
     }
-    private boolean Chase(boolean currentDirectionIsRight, GameObject gameobject) {
+
+    private boolean chase(boolean currentDirectionIsRight, GameObject gameobject) {
         boolean moveToRight;
 
         // Enemy changes movement direction when passes by the player. Required distance for changing direction - player's width
@@ -124,7 +135,7 @@ public class Dinosaur extends GameObject{
         return  moveToRight;
     }
 
-    private boolean AttackOnRight(boolean currentDirectionIsRight, GameObject player) {
+    private boolean attackOnRight(boolean currentDirectionIsRight, GameObject player) {
         boolean AttackOnRight = false;
 
         // Enemy attacks if it is on specific distance from the player
@@ -137,7 +148,7 @@ public class Dinosaur extends GameObject{
         return AttackOnRight;
     }
 
-    private boolean AttackOnLeft(boolean currentDirectionIsRight, GameObject player) {
+    private boolean attackOnLeft(boolean currentDirectionIsRight, GameObject player) {
         boolean AttackOnLeft = false;
 
         // Enemy attacks if it is on specific distance from the player
