@@ -13,7 +13,7 @@ public class Bullet extends GameObject{
         super(x, y, 20, 6);
         this.toRight = toRight;
         this.setVelX(5);
-        setHealth(100);
+        setHealth(1);
         setAttackDamage(20);
     }
 

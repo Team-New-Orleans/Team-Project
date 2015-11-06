@@ -79,7 +79,7 @@ public class Dinosaur extends GameObject{
             if (toRight){
                 graphics.drawImage(Assets.dinosaurDeath.crop(death / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
             } else {
-                graphics.drawImage(Assets.dinosaurDeathReversed.crop((39 - death) / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
+                graphics.drawImage(Assets.dinosaurDeathReversed.crop((40 - death) / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
             }
         } else if (attacksRight) {
             graphics.drawImage(Assets.dinosaurAttack.crop(hit / 20 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);

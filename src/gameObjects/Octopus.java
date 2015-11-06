@@ -19,7 +19,7 @@ public class Octopus extends GameObject{
     // Chasing target
     public GameObject target;
 
-    private int sprite = 1, hit = 1;
+    private int sprite = 1, hit = 1, death = 1;
 
     public Octopus(int x, int y, boolean startPos, GameObject target) {
         super(x, y, width, height);
@@ -37,7 +37,16 @@ public class Octopus extends GameObject{
         attacksRight = AttackOnRight(toRight, target);
         attacksLeft = AttackOnLeft(toRight, target);
 
-        if (attacksRight) {
+
+
+        if (this.getHealth() <= 0) {
+            death++;
+            this.setAttackDamage(0);
+            if (death >= 19) {
+                this.setIsDead(true);
+                death = 1;
+            }
+        } else if (attacksRight) {
             hit++;
             if (hit >= 19) {
                 this.setX(this.getX() + getVelX());
@@ -68,7 +77,9 @@ public class Octopus extends GameObject{
 
     @Override
     public void render(Graphics graphics) {
-        if (attacksLeft || attacksRight){
+        if (this.getHealth() <= 0) {
+            graphics.drawImage(Assets.octopusDeath.crop(0, 0, 58, 62), this.getX(), this.getY(), null);
+        } else if (attacksLeft || attacksRight){
             graphics.drawImage(Assets.octopusAttack.crop(0, hit / 5 * heightAttack, width, height), this.getX(), this.getY(), null);
         }else if (toRight) {
             graphics.drawImage(Assets.octopus.crop(sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);

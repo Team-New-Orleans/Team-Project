@@ -31,7 +31,6 @@ public class Display extends Canvas {
         this.jframe = new JFrame(this.title);
         this.jframe.setSize(this.width, this.height);
 
-        this.jframe.setFocusable(true);
         this.jframe.setVisible(true);
         this.jframe.setResizable(false);
 
