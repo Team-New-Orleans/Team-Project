@@ -19,16 +19,25 @@ public class MainMenu implements ActionListener {
     private Canvas canvas;
     private JFrame jframe = new JFrame();
 
-    JButton start = new JButton("New game");
-    JButton exit = new JButton ("Exit");
-    JButton leaderboard = new JButton ("Leaderboard");
-    JButton settings = new JButton ("Settings");
+    private JButton start = new JButton("New game");
+    private JButton exit = new JButton ("Exit");
+    private JButton leaderboard = new JButton ("Leaderboard");
+    private JButton tutorial = new JButton ("Tutorial");
+    private JPanel panel = new JPanel();
 
     public MainMenu(){
         this.jframe = new JFrame("Main Menu");
         setBackground();
         setFrame();
         createButtons();
+    }
+
+    public JFrame getJFrame(){
+        return this.jframe;
+    }
+
+    public void setJFrame(JFrame jf){
+        this.jframe = jf;
     }
 
     private void setFrame(){
@@ -45,6 +54,7 @@ public class MainMenu implements ActionListener {
         this.canvas.setPreferredSize(dimension);
     }
 
+
     private void setBackground(){
         this.background = ImageLoader.loadImage("/background.jpg");
         this.jframe.setContentPane(new JLabel(new ImageIcon(background)));
@@ -54,18 +64,17 @@ public class MainMenu implements ActionListener {
     private void createButtons(){
         start.addActionListener(this);
         leaderboard.addActionListener(this);
-        settings.addActionListener(this);
+        tutorial.addActionListener(this);
         exit.addActionListener(this);
 
         start.setForeground(Color.WHITE);
         leaderboard.setForeground(Color.WHITE);
-        settings.setForeground(Color.WHITE);
+        tutorial.setForeground(Color.WHITE);
         exit.setForeground(Color.WHITE);
 
-        JPanel panel = new JPanel();
         start.setBounds((width-buttonWidth)/2, 100, buttonWidth, buttonHeight);
-        leaderboard.setBounds((width-buttonWidth)/2, 220, buttonWidth, buttonHeight);
-        settings.setBounds((width-buttonWidth)/2, 340, buttonWidth, buttonHeight);
+        tutorial.setBounds((width-buttonWidth)/2, 220, buttonWidth, buttonHeight);
+        leaderboard.setBounds((width-buttonWidth)/2, 340, buttonWidth, buttonHeight);
         exit.setBounds((width-buttonWidth)/2, 460, buttonWidth, buttonHeight);
 
         //start.setOpaque(false);
@@ -73,19 +82,52 @@ public class MainMenu implements ActionListener {
         //start.setBorderPainted(false);
 
         leaderboard.setContentAreaFilled(false);
-        settings.setContentAreaFilled(false);
+        tutorial.setContentAreaFilled(false);
         exit.setContentAreaFilled(false);
 
         panel.setBounds(800, 800, 200, 100);
         panel.add(start);
         panel.add(leaderboard);
-        panel.add(settings);
+        panel.add(tutorial);
         panel.add(exit);
 
         jframe.add(start);
         jframe.add(leaderboard);
-        jframe.add(settings);
+        jframe.add(tutorial);
         jframe.add(exit);
+    }
+
+    public void JFDispose(){
+        jframe.dispose();
+    }
+
+    public void setLabel(JLabel l){
+        l.setForeground(Color.white);
+        l.setBounds(200, 70, 400, 300);
+        panel.add(l);
+        jframe.add(l);
+    }
+
+    public void setLifeBar(JLabel l){
+        l.setBackground(Color.GREEN);
+        l.setBounds(350,300,200,30);
+        l.setOpaque(true);
+        panel.add(l);
+        jframe.add(l);
+    }
+
+    public void setButton(JButton b, int buttonHeight){
+        start.setVisible(false);
+        exit.setVisible(false);
+        tutorial.setVisible(false);
+        leaderboard.setVisible(false);
+
+        b.addActionListener(this);
+        b.setForeground(Color.CYAN);
+        b.setBounds((width-buttonWidth)/2, buttonHeight, buttonWidth, buttonHeight);
+        b.setContentAreaFilled(false);
+        panel.add(b);
+        jframe.add(b);
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -94,8 +136,9 @@ public class MainMenu implements ActionListener {
             game.Game game = new game.Game("Java Workshop", 800, 600);
             game.start();
             jframe.dispose();
-        } else if(comStr.equals("Settings")){
-            //go to settings
+        } else if(comStr.equals("Tutorial")){
+            new Tutorial();
+            jframe.dispose();
         } else if(comStr.equals("Leaderboard")){
             // Go to leaderboard
         } else if(comStr.equals("Exit")){
