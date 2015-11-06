@@ -22,28 +22,38 @@ public class EnemyGenerator {
             Handler.objects.add(new FlyingDragon(800, 30 ,false));
         }
         if(getCountOfEnemies() < 3){
-
-            int randomWidth = randomNumberGenerator.nextInt(800);
-            if(this.player.getX() < 100){
-                randomNumberGenerator.ints(250, 800 - this.player.getX());
-                randomWidth = this.player.getX() + randomNumberGenerator.nextInt();
-            } else if(this.player.getX() > 700){
-                randomNumberGenerator.ints(250, 800 - this.player.getX());
-                randomWidth = this.player.getX() - randomNumberGenerator.nextInt();
-            } else {
-                if (randomWidth > this.player.getX() - 60 && randomWidth < this.player.getX() + 60) {
-                    if (randomWidth < player.getX()) {
-                        randomWidth -= 100;
+            try {
+                int randomWidth;
+                if(this.player.getX() < 100){
+                    randomNumberGenerator.ints(250, 800 - this.player.getX());
+                    randomWidth = this.player.getX() + randomNumberGenerator.nextInt();
+                } else if(this.player.getX() > 700){
+                    randomNumberGenerator.ints(250, 800 - this.player.getX());
+                    randomWidth = this.player.getX() - randomNumberGenerator.nextInt();
+                } else {
+                    if(randomNumberGenerator.nextBoolean()){
+                        randomWidth = randomNumberGenerator.nextInt(400);
                     } else {
-                        randomWidth += 100;
+                        randomNumberGenerator.ints(400, 800);
+                        randomWidth = randomNumberGenerator.nextInt();
+                    }
+                    if (randomWidth > this.player.getX() - 80 && randomWidth < this.player.getX() + 80) {
+                        if (randomWidth <= player.getX()) {
+                            randomWidth -= 120;
+                        } else {
+                            randomWidth += 120;
+                        }
                     }
                 }
-            }
                 if(randomNumberGenerator.nextBoolean()){
                     Handler.objects.add(new Dinosaur(randomWidth, 420 , false, this.player));
                 } else {
                     Handler.objects.add(new Octopus(randomWidth, 465 , true, this.player));
                 }
+            } catch (IllegalArgumentException bound){
+                System.out.println(bound.getMessage());
+            }
+
 
 
         }
@@ -51,7 +61,7 @@ public class EnemyGenerator {
     private int getCountOfEnemies(){
         int count = 0;
         for (int i = 0; i < Handler.objects.size(); i++) {
-            if(!(Handler.objects.get(i) instanceof Bullet) && !(Handler.objects.get(i) instanceof Player)){
+            if(!(Handler.objects.get(i).getID() == 2) && !(Handler.objects.get(i).getID() == 1)){
                 count++;
             }
         }

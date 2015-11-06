@@ -84,6 +84,7 @@ public class Player extends GameObject{
         if(this.collision(Handler.objects)){
             this.setX(tempX);
             this.setY(tempY);
+
         }
         this.getBoundingBox().setBounds(this.getX(), this.getY(), width, height);
     }
@@ -122,6 +123,7 @@ public class Player extends GameObject{
     @Override
     public void Hit(int value) {
         this.setHealth(this.getHealth() - value);
+        System.out.print("Hit");
     }
 
     private boolean collision(LinkedList<GameObject> list) {
