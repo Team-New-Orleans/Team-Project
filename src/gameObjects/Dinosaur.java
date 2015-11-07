@@ -46,7 +46,7 @@ public class Dinosaur extends GameObject{
             }
         } else if (attacksRight) {
             hit++;
-            if (hit >= 79) {
+            if (hit >= 39) {
                 this.setX(this.getX() + getVelX());
                 hit = 1;
                 toRight = false; // Changes direction when hit.
