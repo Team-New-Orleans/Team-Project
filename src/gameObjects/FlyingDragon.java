@@ -41,9 +41,6 @@ public class FlyingDragon extends GameObject{
                 this.setY(this.getY() + getVelY());
             } else if (hit >= 39) {
                 death++;
-                if (death % 2 == 0) {
-                    this.setY(this.getY() + 1);
-                }
                 this.setAttackDamage(0);
                 if (death >= 79) {
                     this.setIsDead(true);

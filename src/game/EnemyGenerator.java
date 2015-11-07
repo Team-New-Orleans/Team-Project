@@ -10,7 +10,7 @@ public class EnemyGenerator {
     private static long lastTimeGenerated = System.nanoTime();
     private static long now;
     public EnemyGenerator() {
-        Handler.objects.add(new FlyingDragon(0, 25, true));
+        Handler.objects.add(new FlyingDragon(0, 45, true));
         Handler.objects.add(new Dinosaur(800, 420 , false, Game.player));
         Handler.objects.add(new Octopus(800, 465 , false, Game.player));
         randomNumberGenerator = new Random();
@@ -19,9 +19,9 @@ public class EnemyGenerator {
     public void generatingEnemy(){
         if(Handler.objects.stream().noneMatch(enemy-> enemy instanceof FlyingDragon)){
             if(randomNumberGenerator.nextBoolean()){
-                Handler.objects.add(new FlyingDragon(800, 25, false));
+                Handler.objects.add(new FlyingDragon(800, 45, false));
             } else {
-                Handler.objects.add(new FlyingDragon(0, 25, true));
+                Handler.objects.add(new FlyingDragon(0, 45, true));
             }
         }
 
