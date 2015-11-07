@@ -26,9 +26,14 @@ public class Player extends GameObject{
     public Player() {
         super(20, 470, width, height);
         this.attackDamage = 150;
+
         this.setVelX(3);
         this.setVelY(2);
+
         this.setHealth(200);
+        this.setLife(3);
+        this.setIsDead(false);
+
         this.setAttackDamage(0);
     }
 
@@ -121,6 +126,13 @@ public class Player extends GameObject{
     @Override
     public void Hit(int value) {
         this.setHealth(this.getHealth() - value);
+        if (this.getHealth() <= 0) {
+            this.setLife(this.getLife() - 1);
+            this.setHealth(200);
+        }
+        if (this.getLife() < 0) {
+            this.setIsDead(true);
+        }
         System.out.print("Hit");
     }
 

@@ -9,6 +9,7 @@ public abstract class GameObject {
     protected int width;
     protected int height;
     private int health;
+    private int life;
     private int attackDamage;
     private boolean isDead;
 
@@ -112,4 +113,8 @@ public abstract class GameObject {
     public void setIsDead (boolean isDead) {
         this.isDead = isDead;
     }
+
+    public int getLife() {return this.life; }
+
+    public void setLife (int life) {this.life = life; }
 }
