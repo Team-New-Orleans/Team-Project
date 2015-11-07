@@ -7,7 +7,8 @@ import java.util.Random;
 public class EnemyGenerator {
 
     private Random randomNumberGenerator;
-
+    private static long lastTimeGenerated = System.nanoTime();
+    private static long now;
     public EnemyGenerator() {
         //Handler.objects.add(new FlyingDragon(0, 30 ,true));
         Handler.objects.add(new Dinosaur(800, 420 , false, Game.player));
@@ -25,27 +26,21 @@ public class EnemyGenerator {
             }
         }
         */
-
-        if(getCountOfEnemies() < 4){
+        now = System.nanoTime();
+        double delta = now - lastTimeGenerated;
+        double ns = 1_000_000_000.0;
+        if(Math.abs(delta / ns) > 1.3){
             try {
                 int randomWidth;
-                if(Game.player.getX() < 100){
-                    randomWidth = randomNumberGenerator.ints(250, 700).findFirst().getAsInt();
-                } else if(Game.player.getX() > 700){
-
-                    randomWidth =randomNumberGenerator.ints(0, 600).findFirst().getAsInt();
+                if(Game.player.getX() < 150){
+                    randomWidth = 800;
+                } else if(Game.player.getX() > 650){
+                    randomWidth = 0;
                 } else {
                     if(randomNumberGenerator.nextBoolean()){
-                        randomWidth = randomNumberGenerator.nextInt(400);
+                        randomWidth = 0;
                     } else {
-                        randomWidth = randomNumberGenerator.ints(400, 800).findFirst().getAsInt();
-                    }
-                    if (randomWidth > Game.player.getX() - 80 && randomWidth < Game.player.getX() + 80) {
-                        if (randomWidth <= Game.player.getX()) {
-                            randomWidth -= 220;
-                        } else {
-                            randomWidth += 220;
-                        }
+                        randomWidth = 800;
                     }
                 }
 
@@ -54,19 +49,10 @@ public class EnemyGenerator {
                 } else {
                     Handler.objects.add(new Octopus(randomWidth, 465 , true, Game.player));
                 }
+                lastTimeGenerated = now;
             } catch (IllegalArgumentException bound){
                 System.out.println(bound.getMessage());
             }
         }
     }
-    private int getCountOfEnemies(){
-        int count = 0;
-        for (int i = 0; i < Handler.objects.size(); i++) {
-            if(!(Handler.objects.get(i).getID() == 2) && !(Handler.objects.get(i).getID() == 1)){
-                count++;
-            }
-        }
-        return count;
-    }
-
 }

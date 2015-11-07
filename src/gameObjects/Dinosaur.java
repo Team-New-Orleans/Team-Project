@@ -33,9 +33,7 @@ public class Dinosaur extends GameObject{
 
     @Override
     public void tick() {
-        toRight = chase(toRight, target);
-        attacksRight = attackOnRight(toRight, target);
-        attacksLeft = attackOnLeft(toRight, target);
+
 
         if (this.getHealth() <= 0) {
             death++;
@@ -65,7 +63,11 @@ public class Dinosaur extends GameObject{
             this.setX(this.getX() - getVelX());
             sprite++;
         }
-
+        if(!this.getIsDead()){
+            toRight = chase(toRight, target);
+            attacksRight = attackOnRight(toRight, target);
+            attacksLeft = attackOnLeft(toRight, target);
+        }
         if (sprite >= 29) {
             sprite = 1;
         }
