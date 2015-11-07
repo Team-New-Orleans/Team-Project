@@ -44,7 +44,6 @@ public class Octopus extends GameObject{
             this.setAttackDamage(0);
             if (death >= 19) {
                 this.setIsDead(true);
-                death = 1;
             }
         } else if (attacksRight) {
             hit++;

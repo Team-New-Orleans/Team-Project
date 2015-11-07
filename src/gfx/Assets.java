@@ -7,7 +7,8 @@ public class Assets {
 
 
     public static SpriteSheet player, reversedPlayer, bullet,
-            flyingDragon, flyingDragonReversed, flyingDragonAttack,
+            flyingDragon, flyingDragonReversed, flyingDragonAttack, getFlyingDragonAttackReversed,
+            flyingDragonDeath, flyingDragonDeathReversed,
             dinosaur, dinosaurReversed, dinosaurAttack, dinosaurAttackReversed, dinosaurDeath, dinosaurDeathReversed,
             octopus, octopusReversed, octopusAttack, octopusDeath;
 
@@ -21,6 +22,9 @@ public class Assets {
         flyingDragon = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon.png"));
         flyingDragonReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon-reversed.png"));
         flyingDragonAttack = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon-attack.png"));
+        getFlyingDragonAttackReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon-attack-reversed.png"));
+        flyingDragonDeath = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon-death.png"));
+        flyingDragonDeathReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/flying-dragon-death-reversed.png"));
 
         // Ground enemies
         dinosaur = new SpriteSheet(ImageLoader.loadImage("/Enemies/dinosaur.png"));

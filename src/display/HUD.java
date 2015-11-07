@@ -20,6 +20,7 @@ public class HUD {
         }
     }
     public void render(Graphics graphics){
+        // Health bar
         graphics.setColor(Color.white);
         graphics.fillRect(5, 15, 42, 49);
         graphics.drawImage(ImageLoader.loadImage("/Display/soldier.png"),5, 15, null);
@@ -35,9 +36,9 @@ public class HUD {
             graphics.drawRect(50 + (i * 10), 15, 20, 32);
         }
 
-
+        // Life icons
         for (int i = 0; i < Game.player.getLife(); i++) {
-           graphics.drawImage(ImageLoader.loadImage("/Display/life.png"), 260 + (i * 32), 15, null);
+           graphics.drawImage(ImageLoader.loadImage("/Display/life.png"), 260 + (i * 31), 15, null);
         }
 
 

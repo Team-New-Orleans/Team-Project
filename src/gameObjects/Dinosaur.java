@@ -33,25 +33,22 @@ public class Dinosaur extends GameObject{
 
     @Override
     public void tick() {
-
-
         if (this.getHealth() <= 0) {
             death++;
             this.setAttackDamage(0);
             if (death >= 79) {
                 this.setIsDead(true);
-                death = 1;
             }
         } else if (attacksRight) {
             hit++;
-            if (hit >= 39) {
+            if (hit >= 19) {
                 this.setX(this.getX() + getVelX());
                 hit = 1;
                 toRight = false; // Changes direction when hit.
                             }
         } else if (attacksLeft) {
             hit++;
-            if (hit >= 39) {
+            if (hit >= 19) {
                 this.setX(this.getX() - getVelX());
                 hit = 1;
                 toRight = true; // Changes direction when hit.
@@ -81,16 +78,16 @@ public class Dinosaur extends GameObject{
             if (toRight){
                 graphics.drawImage(Assets.dinosaurDeath.crop(death / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
             } else {
-                graphics.drawImage(Assets.dinosaurDeathReversed.crop((40 - death) / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
+                graphics.drawImage(Assets.dinosaurDeathReversed.crop((79 - death) / 40 * 129, 0, 129, 125), this.getX(), this.getY(), null);
             }
         } else if (attacksRight) {
-            graphics.drawImage(Assets.dinosaurAttack.crop(hit / 20 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.dinosaurAttack.crop(hit / 10 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);
         } else if (attacksLeft) {
-            graphics.drawImage(Assets.dinosaurAttackReversed.crop(hit / 20 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.dinosaurAttackReversed.crop((19 - hit) / 10 * widthAttack, 0, widthAttack, 115), this.getX(), this.getY(), null);
         } else if (toRight){
             graphics.drawImage(Assets.dinosaur.crop(sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);
         } else {
-            graphics.drawImage(Assets.dinosaurReversed.crop( sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);
+            graphics.drawImage(Assets.dinosaurReversed.crop(sprite / 10 * width, 0, width, height), this.getX(), this.getY(), null);
         }
     }
 
