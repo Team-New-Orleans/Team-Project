@@ -9,22 +9,23 @@ public class EnemyGenerator {
     private Random randomNumberGenerator;
 
     public EnemyGenerator() {
-
-        Handler.objects.add(new FlyingDragon(800, 30 ,false));
+        //Handler.objects.add(new FlyingDragon(0, 30 ,true));
         Handler.objects.add(new Dinosaur(800, 420 , false, Game.player));
-        Handler.objects.add(new Octopus(800, 465 , true, Game.player));
+        Handler.objects.add(new Octopus(800, 465 , false, Game.player));
         randomNumberGenerator = new Random();
     }
 
     public void generatingEnemy(){
+        /*
         if(Handler.objects.stream().noneMatch(enemy-> enemy instanceof FlyingDragon)){
             if(randomNumberGenerator.nextBoolean()){
                 Handler.objects.add(new FlyingDragon(800, 30 ,false));
             } else {
                 Handler.objects.add(new FlyingDragon(0, 30 ,true));
             }
-
         }
+        */
+
         if(getCountOfEnemies() < 4){
             try {
                 int randomWidth;
@@ -47,6 +48,7 @@ public class EnemyGenerator {
                         }
                     }
                 }
+
                 if(randomNumberGenerator.nextBoolean()){
                     Handler.objects.add(new Dinosaur(randomWidth, 420 , false, Game.player));
                 } else {

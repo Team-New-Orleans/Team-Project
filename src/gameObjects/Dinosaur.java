@@ -140,28 +140,28 @@ public class Dinosaur extends GameObject{
     }
 
     private boolean attackOnRight(boolean currentDirectionIsRight, GameObject player) {
-        boolean AttackOnRight = false;
+        boolean attackOnRight = false;
 
         // Enemy attacks if it is on specific distance from the player
         if (currentDirectionIsRight == true) {
             if (player.getX() == this.getX() + this.getWidthAttack() - 15 && player.getY() == 470 ) { // Attacks only the player is on the ground. OVERLAPPING
-                AttackOnRight = true;
+                attackOnRight = true;
             }
         }
 
-        return AttackOnRight;
+        return attackOnRight;
     }
 
     private boolean attackOnLeft(boolean currentDirectionIsRight, GameObject player) {
-        boolean AttackOnLeft = false;
+        boolean attackOnLeft = false;
 
         // Enemy attacks if it is on specific distance from the player
         if (currentDirectionIsRight == false) {
             if (player.getX() + player.getWidth()  ==  this.getX() + 15 && player.getY() == 470) { // Attacks only the player is on the ground. . OVERLAPPING
-                AttackOnLeft = true;
+                attackOnLeft = true;
             }
         }
 
-        return AttackOnLeft;
+        return attackOnLeft;
     }
 }

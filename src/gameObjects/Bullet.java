@@ -40,9 +40,10 @@ public class Bullet extends GameObject{
 
     private boolean collision(LinkedList<GameObject> list) {
         for (GameObject obj : list) {
-            if(this.intersects(obj) && obj.getID() != 2 && obj.getID() != 1){
+            if(this.intersects(obj) && obj.getID() != 2 && obj.getID() != 1 && obj.getHealth() > 0){
                 obj.Hit(this.getAttackDamage());
                 this.setHealth(0);
+                this.setIsDead(true);
             }
         }
         return false;

@@ -1,9 +1,6 @@
 package game;
 import display.Display;
 import display.HUD;
-import gameObjects.Dinosaur;
-import gameObjects.FlyingDragon;
-import gameObjects.Octopus;
 import gameObjects.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
@@ -25,6 +22,7 @@ public class Game implements Runnable{
     private Handler handler;
     private InputHandler inputHandler;
     private EnemyGenerator enemyGenerator;
+
     // images
     private BufferedImage background;
     private SpriteSheet sheet;
