@@ -127,8 +127,11 @@ public class Player extends GameObject{
     private boolean collision(LinkedList<GameObject> list) {
         for (GameObject obj : list) {
             if(this.intersects(obj) && obj.getID() != 2 && obj.getID() != 1) {
-                this.Hit(obj.getAttackDamage());
-                return true;
+                if(obj.getAttackDamage() > 0){
+                    this.Hit(obj.getAttackDamage());
+                    return true;
+                }
+
             }
         }
         return false;
