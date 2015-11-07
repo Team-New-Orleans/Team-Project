@@ -27,7 +27,7 @@ public class Dinosaur extends GameObject{
         this.setVelX(2);
         this.toRight = startPos; // Starting position
         this.setHealth(40);
-        this.setAttackDamage(1);
+        this.setAttackDamage(20);
         this.setIsDead(false);
     }
 

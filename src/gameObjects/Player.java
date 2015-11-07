@@ -8,6 +8,8 @@ import java.util.LinkedList;
 public class Player extends GameObject{
     private static double gravity = 20;
     private static final int width = 50, height = 60;
+    private static long lastTimeHit = System.nanoTime();
+    private static long now;
     private int i = 0;
     private int attackDamage;
     int lastDrawnPosition = 20;
@@ -79,10 +81,8 @@ public class Player extends GameObject{
             isShooting = false;
         }
 
-      if(this.collision(Handler.objects)){
+        if(this.collision(Handler.objects)){
            this.setX(tempX);
-     //     this.setY(tempY);
-
        }
         this.getBoundingBox().setBounds(this.getX(), this.getY(), width, height);
     }
@@ -128,10 +128,15 @@ public class Player extends GameObject{
         for (GameObject obj : list) {
             if(this.intersects(obj) && obj.getID() != 2 && obj.getID() != 1) {
                 if(obj.getAttackDamage() > 0){
-                    this.Hit(obj.getAttackDamage());
+                    now = System.nanoTime();
+                    double delta = now - lastTimeHit;
+                    double ns = 1_000_000_000.0;
+                    if(Math.abs(delta / ns) > 0.8){
+                        this.Hit(obj.getAttackDamage());
+                        lastTimeHit = now;
+                    }
                     return true;
                 }
-
             }
         }
         return false;

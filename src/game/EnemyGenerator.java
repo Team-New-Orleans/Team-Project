@@ -32,9 +32,9 @@ public class EnemyGenerator {
         if(Math.abs(delta / ns) > 1.3){
             try {
                 int randomWidth;
-                if(Game.player.getX() < 150){
+                if(Game.player.getX() < 100){
                     randomWidth = 800;
-                } else if(Game.player.getX() > 650){
+                } else if(Game.player.getX() > 700){
                     randomWidth = 0;
                 } else {
                     if(randomNumberGenerator.nextBoolean()){
@@ -43,7 +43,6 @@ public class EnemyGenerator {
                         randomWidth = 800;
                     }
                 }
-
                 if(randomNumberGenerator.nextBoolean()){
                     Handler.objects.add(new Dinosaur(randomWidth, 420 , false, Game.player));
                 } else {
