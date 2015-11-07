@@ -1,6 +1,7 @@
 package game;
 import display.Display;
 import display.HUD;
+import gameObjects.Health;
 import gameObjects.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
@@ -9,6 +10,7 @@ import gfx.SpriteSheet;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Game implements Runnable{
 
@@ -32,6 +34,8 @@ public class Game implements Runnable{
 
     private HUD hud;
     public static Player player;
+    //health
+    public static Health health;
 
     public Game(String title, int width, int height) {
         this.width = width;
@@ -52,6 +56,9 @@ public class Game implements Runnable{
         this.hud = new HUD();
         Handler.objects.add(player);
         this.enemyGenerator = new EnemyGenerator();
+        //Health
+        health = new Health(new Random().nextInt(600) + 100,new Random().nextInt(400) + 100);
+        Handler.objects.add(health);
 
     }
 
@@ -95,10 +102,25 @@ public class Game implements Runnable{
         long timer = System.currentTimeMillis();
         int frames = 0;
         long now;
+        double deltaHealth;
+        double deltaLastTime = System.nanoTime();
+        long healthCounter;
 
         while (isRunning){
             now = System.nanoTime();
             delta += (now - lastTime) / ns;
+            //count for health
+            deltaHealth = (now - deltaLastTime) / 20_000_000_000.0;
+            if (deltaHealth >= 1 && health.getIsDead() == true) {
+            	health.setStartX(new Random().nextInt(600) + 100);
+            	health.setStartY(new Random().nextInt(400) + 100);
+            	health = new Health(health.getStartX(),health.gestStartY());
+            	Handler.objects.add(health);
+				deltaLastTime = now;
+			} else if (deltaHealth >= 1) {
+				deltaLastTime = now;
+			}
+            //END of count for health
             lastTime = now;
             while (delta >= 1){
                 tick();

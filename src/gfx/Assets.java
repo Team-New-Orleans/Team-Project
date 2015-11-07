@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
 
 
-    public static SpriteSheet player, reversedPlayer, bullet,
+    public static SpriteSheet player, reversedPlayer, bullet, health,
             flyingDragon, flyingDragonReversed, flyingDragonAttack, getFlyingDragonAttackReversed,
             flyingDragonDeath, flyingDragonDeathReversed,
             dinosaur, dinosaurReversed, dinosaurAttack, dinosaurAttackReversed, dinosaurDeath, dinosaurDeathReversed,
@@ -38,5 +38,8 @@ public class Assets {
         octopusReversed = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus-reversed.png"));
         octopusAttack = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus-attack.png"));
         octopusDeath = new SpriteSheet(ImageLoader.loadImage("/Enemies/octopus-death.png"));
+        
+        //health
+        health = new SpriteSheet(ImageLoader.loadImage("/Health/health.png"));
     }
 }
