@@ -104,7 +104,6 @@ public class Game implements Runnable{
         long now;
         double deltaHealth;
         double deltaLastTime = System.nanoTime();
-        long healthCounter;
 
         while (isRunning){
             now = System.nanoTime();
