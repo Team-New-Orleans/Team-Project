@@ -71,6 +71,9 @@ public class Game implements Runnable{
         handler.tick();
         this.hud.tick();
         this.currentScore.tick();
+        if(player.getIsDead()){
+            this.stop();
+        }
     }
 
     // after tick gives the update render draws it
@@ -164,5 +167,6 @@ public class Game implements Runnable{
                 ie.printStackTrace();
             }
         }
+
     }
 }
