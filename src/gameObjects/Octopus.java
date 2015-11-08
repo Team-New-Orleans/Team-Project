@@ -139,7 +139,9 @@ public class Octopus extends GameObject{
 
         // Enemy attacks if it is on specific distance from the player
         if (currentDirectionIsRight == true) {
-            if (player.getX() == this.getX() + this.getWidthAttack() - 15 && player.getY() == 470 ) { // Attacks only the player is on the ground. OVERLAPPING
+            if (player.getX() <= this.getX() + this.getWidthAttack() - 15 + this.getVelX()&&
+                    player.getX() >= this.getX() + this.getWidthAttack() - 15 - this.getVelX() &&
+                    player.getY() == 470 ) { // Attacks only the player is on the ground. OVERLAPPING
                 AttackOnRight = true;
             }
         }
@@ -152,7 +154,9 @@ public class Octopus extends GameObject{
 
         // Enemy attacks if it is on specific distance from the player
         if (currentDirectionIsRight == false) {
-            if (player.getX() + player.getWidth()  ==  this.getX() + 15 && player.getY() == 470) { // Attacks only the player is on the ground. . OVERLAPPING
+            if (player.getX() + player.getWidth()  <=  this.getX() + 15 + this.getVelX() &&
+                    player.getX() + player.getWidth()  >=  this.getX() + 15 - this.getVelX() &&
+                    player.getY() == 470) { // Attacks only the player is on the ground. . OVERLAPPING
                 AttackOnLeft = true;
             }
         }
