@@ -36,7 +36,7 @@ public class CurrentScore {
 	public void render(Graphics graphics) {
 		graphics.setColor(Color.WHITE);
 		graphics.setFont(new Font("Impact", Font.BOLD, 20));
-		graphics.drawString("current score: " + currentScore, 400, 40);
+		graphics.drawString(String.valueOf(currentScore), 420, 38);
 		graphics.dispose();
 	}
 	
