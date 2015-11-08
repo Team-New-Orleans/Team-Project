@@ -1,6 +1,7 @@
 package game;
 import display.Display;
 import display.HUD;
+import display.CurrentScore;
 import gameObjects.Health;
 import gameObjects.Player;
 import gfx.Assets;
@@ -34,6 +35,7 @@ public class Game implements Runnable{
 
     private HUD hud;
     public static Player player;
+    private CurrentScore currentScore;
     //health
     public static Health health;
 
@@ -54,6 +56,7 @@ public class Game implements Runnable{
         Assets.init();
         player = new Player();
         this.hud = new HUD();
+        this.currentScore = new CurrentScore();
         Handler.objects.add(player);
         this.enemyGenerator = new EnemyGenerator();
         //Health
@@ -67,12 +70,12 @@ public class Game implements Runnable{
         this.enemyGenerator.generatingEnemy();
         handler.tick();
         this.hud.tick();
+        this.currentScore.tick();
     }
 
     // after tick gives the update render draws it
     public void render(){
         this.bufferStrategy = this.display.getCanvas().getBufferStrategy();
-
         if(this.bufferStrategy == null){
             this.display.getCanvas().createBufferStrategy(2); // how many buffers to user
             return;
@@ -87,6 +90,7 @@ public class Game implements Runnable{
        // rendering every single object
         handler.render(this.graphics);
         this.hud.render(this.graphics);
+        this.currentScore.render(this.graphics);
 
         this.bufferStrategy.show();
         this.graphics.dispose();
@@ -104,6 +108,7 @@ public class Game implements Runnable{
         long now;
         double deltaHealth;
         double deltaLastTime = System.nanoTime();
+        long healthCounter;
 
         while (isRunning){
             now = System.nanoTime();
