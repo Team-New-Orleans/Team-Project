@@ -7,6 +7,7 @@ import gameObjects.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
 import gfx.SpriteSheet;
+import states.*;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -21,10 +22,12 @@ public class Game implements Runnable{
     private Graphics graphics;
     private Display display;
 
-    // handlers
-    private Handler handler;
-    private InputHandler inputHandler;
-    private EnemyGenerator enemyGenerator;
+
+    //States
+    private State gameState;
+    private State menuState;
+    private State gameOverState;
+
 
     // images
     private BufferedImage background;
@@ -33,11 +36,9 @@ public class Game implements Runnable{
     private boolean isRunning;
     private Thread thread;
 
-    private HUD hud;
+
     public static Player player;
-    private CurrentScore currentScore;
-    //health
-    public static Health health;
+
 
     public Game(String title, int width, int height) {
         this.width = width;
@@ -50,27 +51,25 @@ public class Game implements Runnable{
         this.display = new Display(title, width, height);
         this.background = ImageLoader.loadImage("/background.jpg");
 
-        this.handler = new Handler();
-        this.inputHandler = new InputHandler(this.display);
-
         Assets.init();
         player = new Player();
-        this.hud = new HUD();
-        this.currentScore = new CurrentScore();
+
+        gameState = new GameState(this.display);
+        menuState = new MenuState();
+        gameOverState = new GameOverSate();
+        StateManager.setState(gameState);
         Handler.objects.add(player);
-        this.enemyGenerator = new EnemyGenerator();
-        //Health
-        health = new Health(new Random().nextInt(600) + 100,new Random().nextInt(400) + 100);
-        Handler.objects.add(health);
 
     }
 
     // tick wait for any updated and movement
     public void tick(){
-        this.enemyGenerator.generatingEnemy();
-        handler.tick();
-        this.hud.tick();
-        this.currentScore.tick();
+        if (StateManager.getState() != null) {
+            StateManager.getState().tick();
+        }
+        if(player.getIsDead()){
+            this.stop();
+        }
     }
 
     // after tick gives the update render draws it
@@ -86,12 +85,13 @@ public class Game implements Runnable{
         // clearing the screen
         this.graphics.clearRect(0,0 , this.width, this.height);
         // drawing
-        this.graphics.drawImage(this.background, 0, 0, this.width, this.height, null);
-       // rendering every single object
-        handler.render(this.graphics);
-        this.hud.render(this.graphics);
-        this.currentScore.render(this.graphics);
 
+        this.graphics.drawImage(this.background, 0, 0, this.width, this.height, null);
+
+       // rendering every single object
+        if (StateManager.getState() != null){
+            StateManager.getState().render(this.graphics);
+        }
         this.bufferStrategy.show();
         this.graphics.dispose();
     }
@@ -106,25 +106,10 @@ public class Game implements Runnable{
         long timer = System.currentTimeMillis();
         int frames = 0;
         long now;
-        double deltaHealth;
-        double deltaLastTime = System.nanoTime();
-        long healthCounter;
 
         while (isRunning){
             now = System.nanoTime();
             delta += (now - lastTime) / ns;
-            //count for health
-            deltaHealth = (now - deltaLastTime) / 20_000_000_000.0;
-            if (deltaHealth >= 1 && health.getIsDead() == true) {
-            	health.setStartX(new Random().nextInt(600) + 100);
-            	health.setStartY(new Random().nextInt(400) + 100);
-            	health = new Health(health.getStartX(),health.gestStartY());
-            	Handler.objects.add(health);
-				deltaLastTime = now;
-			} else if (deltaHealth >= 1) {
-				deltaLastTime = now;
-			}
-            //END of count for health
             lastTime = now;
             while (delta >= 1){
                 tick();
@@ -164,5 +149,6 @@ public class Game implements Runnable{
                 ie.printStackTrace();
             }
         }
+
     }
 }

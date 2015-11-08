@@ -1,4 +1,5 @@
 package gameObjects;
+import game.Game;
 import game.Handler;
 import gfx.Assets;
 
@@ -25,7 +26,6 @@ public class Player extends GameObject{
 
     public Player() {
         super(20, 470, width, height);
-        this.attackDamage = 150;
 
         this.setVelX(3);
         this.setVelY(2);
@@ -41,7 +41,9 @@ public class Player extends GameObject{
     public void tick(){
        int tempX = this.getX();
        // int tempY = this.getY();
-
+        if(this.getHealth() <= 0){
+            this.setIsDead(true);
+        }
         if(isMovingRight){
 
             if(this.getX() - lastDrawnPosition >= 10){

@@ -18,6 +18,7 @@ public class Health extends GameObject {
 		super(0, 0, width, height);
 		setHealth(1);
 		setAttackDamage(-20);
+		setIsDead(false);
 		this.startX = startX;
 		this.startY = startY;
 	}
