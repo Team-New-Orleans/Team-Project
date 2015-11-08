@@ -6,6 +6,7 @@ import display.HUD;
 import game.EnemyGenerator;
 import game.Handler;
 import game.InputHandler;
+import game.HealthGenerator;
 
 import java.awt.*;
 
@@ -18,6 +19,7 @@ public class GameState extends State {
     private EnemyGenerator enemyGenerator;
     private HUD hud;
     private CurrentScore currentScore;
+    private HealthGenerator healthGenerator;
 
     public GameState(Display display) {
         this.handler = new Handler();
@@ -25,11 +27,13 @@ public class GameState extends State {
         this.hud = new HUD();
         this.currentScore = new CurrentScore();
         this.enemyGenerator = new EnemyGenerator();
+        this.healthGenerator = new HealthGenerator();
     }
 
     @Override
     public void tick() {
         this.enemyGenerator.generatingEnemy();
+        this.healthGenerator.generatingHealth();
         handler.tick();
         this.hud.tick();
         this.currentScore.tick();

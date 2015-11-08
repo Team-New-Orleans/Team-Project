@@ -13,11 +13,15 @@ public class Health extends GameObject {
 	private static int height = 10;
 	private static int startX;
 	private static int startY;
+	private long lastTime = System.nanoTime();
+	private long now = System.nanoTime();
+	private double delta;
 	
 	public Health (int startX, int startY) {
 		super(0, 0, width, height);
 		setHealth(1);
 		setAttackDamage(-20);
+		setIsDead(false);
 		this.startX = startX;
 		this.startY = startY;
 	}
