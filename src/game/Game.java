@@ -54,12 +54,12 @@ public class Game implements Runnable{
         this.background = ImageLoader.loadImage("/background.jpg");
 
         Assets.init();
+        player = new Player();
+
         gameState = new GameState(this.display);
         menuState = new MenuState();
         gameOverState = new GameOverSate();
         StateManager.setState(gameState);
-
-        player = new Player();
         Handler.objects.add(player);
 
         //Health
