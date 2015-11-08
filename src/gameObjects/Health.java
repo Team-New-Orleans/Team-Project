@@ -24,7 +24,7 @@ public class Health extends GameObject {
 	
 	private boolean collision (LinkedList<GameObject> list) {
 		for (GameObject obj : list) {
-            if(this.intersects(obj) && obj.getID() == 1 && obj.getHealth() < 180){
+            if(this.intersects(obj) && obj.getID() == 1 && obj.getHealth() < 200){
                 obj.Hit(this.getAttackDamage());
                 this.setHealth(0);
                 this.setIsDead(true);
@@ -54,7 +54,7 @@ public class Health extends GameObject {
 
 	@Override
 	public void Hit(int value) {
-		this.setHealth(this.getHealth() - value);
+		this.setHealth(Math.min(this.getHealth() - value, 200));
 	}
 	public void setStartX (int newValue) {
 		this.startX = newValue;
