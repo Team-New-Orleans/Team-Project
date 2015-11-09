@@ -24,8 +24,8 @@ public class Game implements Runnable{
 
 
     //States
-    private State gameState;
-    private State menuState;
+    public static State gameState;
+
     private State gameOverState;
 
 
@@ -55,7 +55,6 @@ public class Game implements Runnable{
         player = new Player();
 
         gameState = new GameState(this.display);
-        menuState = new MenuState();
         gameOverState = new GameOverSate();
         StateManager.setState(gameState);
         Handler.objects.add(player);

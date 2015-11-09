@@ -1,5 +1,6 @@
 package menu;
 
+import game.Game;
 import gfx.ImageLoader;
 import javax.swing.*;
 import java.awt.*;
@@ -144,7 +145,7 @@ public class MainMenu implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         String comStr = ae.getActionCommand();
         if (comStr.equals("New game")){
-            game.Game game = new game.Game("Java Workshop", 800, 600);
+            Game game= new Game("Java Workshop", 800, 600);
             game.start();
             jframe.dispose();
         } else if(comStr.equals("Tutorial")){
