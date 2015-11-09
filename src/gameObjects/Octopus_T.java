@@ -23,6 +23,7 @@ public class Octopus_T extends GameObject {
         this.setHealth(10);
         this.setAttackDamage(0);
         this.setIsDead(false);
+        this.getBoundingBox().setBounds(this.getX(), this.getY(), width, 0);
     }
 
 
@@ -30,6 +31,8 @@ public class Octopus_T extends GameObject {
     public void tick() {
         start++;
         if (start >= 100) {
+            if(start == 100)
+                this.getBoundingBox().setBounds(this.getX(), this.getY(), width, height);
             if (this.getHealth() <= 0) {
                 death++;
                 if (death >= 10) {
