@@ -48,6 +48,10 @@ public class Display extends Canvas {
 
     }
 
+    public void dispose(){
+        jframe.dispose();
+    }
+
     public Canvas getCanvas() {
         return canvas;
     }

@@ -1,7 +1,10 @@
 package menu;
 
+import display.CurrentScore;
 import game.Game;
 import gfx.ImageLoader;
+import org.omg.CORBA.Current;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,6 +37,7 @@ public class MainMenu implements ActionListener {
         setBackground();
         setFrame();
         createButtons();
+        System.out.println();
     }
 
     public JFrame getJFrame(){

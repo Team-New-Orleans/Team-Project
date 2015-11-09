@@ -1,8 +1,6 @@
 package game;
-import display.Display;
-import display.HUD;
 import display.CurrentScore;
-import gameObjects.Health;
+import display.Display;
 import gameObjects.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
@@ -12,7 +10,6 @@ import states.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
-import java.util.Random;
 
 public class Game implements Runnable{
 
@@ -21,7 +18,6 @@ public class Game implements Runnable{
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
     private Display display;
-
 
     //States
     public static State gameState;
@@ -47,6 +43,15 @@ public class Game implements Runnable{
         this.isRunning = false;
     }
 
+    public boolean isRunning() {
+        return this.isRunning;
+    }
+
+    public void setIsRunning(boolean isRunning) {
+        this.isRunning = isRunning;
+    }
+
+
     public void init(){
         this.display = new Display(title, width, height);
         this.background = ImageLoader.loadImage("/background.jpg");
@@ -55,7 +60,7 @@ public class Game implements Runnable{
         player = new Player();
 
         gameState = new GameState(this.display);
-        gameOverState = new GameOverSate();
+        //gameOverState = new GameOverState();
         StateManager.setState(gameState);
         Handler.objects.add(player);
 
@@ -141,6 +146,8 @@ public class Game implements Runnable{
     public synchronized void stop(){ // this joins all the threads and stops the application
         if(this.isRunning){
             try{
+                new GameOverState(CurrentScore.getCurrentScore());
+                display.dispose();
                 this.isRunning = false;
                 this.thread.join();
 
