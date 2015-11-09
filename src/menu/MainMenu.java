@@ -23,6 +23,7 @@ public class MainMenu implements ActionListener {
     private Canvas canvas;
     private JFrame jframe = new JFrame();
 
+    private JLabel gameName = new JLabel("The Undertaker");
     private JButton start = new JButton("New game");
     private JButton exit = new JButton ("Exit");
     private JButton leaderboard = new JButton ("Leaderboard");
@@ -37,7 +38,6 @@ public class MainMenu implements ActionListener {
         setBackground();
         setFrame();
         createButtons();
-        System.out.println();
     }
 
     public JFrame getJFrame(){
@@ -62,7 +62,6 @@ public class MainMenu implements ActionListener {
         this.canvas.setPreferredSize(dimension);
     }
 
-
     private void setBackground(){
         this.background = ImageLoader.loadImage("/background.jpg");
         this.jframe.setContentPane(new JLabel(new ImageIcon(background)));
@@ -75,14 +74,16 @@ public class MainMenu implements ActionListener {
         tutorial.addActionListener(this);
         exit.addActionListener(this);
 
+        gameName.setForeground(Color.WHITE);
         start.setForeground(Color.WHITE);
         leaderboard.setForeground(Color.WHITE);
         tutorial.setForeground(Color.WHITE);
         exit.setForeground(Color.WHITE);
 
-        start.setBounds((width-buttonWidth)/2, 100, buttonWidth, buttonHeight);
-        tutorial.setBounds((width-buttonWidth)/2, 220, buttonWidth, buttonHeight);
-        leaderboard.setBounds((width-buttonWidth)/2, 340, buttonWidth, buttonHeight);
+        gameName.setBounds((width-480)/2, 70, 480, buttonHeight+10);
+        start.setBounds((width-buttonWidth)/2, 280, buttonWidth, buttonHeight);
+        tutorial.setBounds((width-buttonWidth)/2, 340, buttonWidth, buttonHeight);
+        leaderboard.setBounds((width-buttonWidth)/2, 400, buttonWidth, buttonHeight);
         exit.setBounds((width-buttonWidth)/2, 460, buttonWidth, buttonHeight);
 
         //start.setOpaque(false);
@@ -93,6 +94,7 @@ public class MainMenu implements ActionListener {
         tutorial.setContentAreaFilled(false);
         exit.setContentAreaFilled(false);
 
+        gameName.setFont(new Font(fontType, Font.PLAIN, 72));
         start.setFont(new Font(fontType, Font.PLAIN, fontSize));
         tutorial.setFont(new Font(fontType, Font.PLAIN, fontSize));
         leaderboard.setFont(new Font(fontType, Font.PLAIN, fontSize));
@@ -104,6 +106,7 @@ public class MainMenu implements ActionListener {
         panel.add(tutorial);
         panel.add(exit);
 
+        jframe.add(gameName);
         jframe.add(start);
         jframe.add(leaderboard);
         jframe.add(tutorial);
@@ -131,6 +134,7 @@ public class MainMenu implements ActionListener {
     }
 
     public void setButton(JButton b, int buttonHeight){
+        gameName.setVisible(false);
         start.setVisible(false);
         exit.setVisible(false);
         tutorial.setVisible(false);
@@ -149,7 +153,7 @@ public class MainMenu implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         String comStr = ae.getActionCommand();
         if (comStr.equals("New game")){
-            Game game= new Game("Java Workshop", 800, 600);
+            Game game= new Game("The Undertaker", 800, 600);
             game.start();
             jframe.dispose();
         } else if(comStr.equals("Tutorial")){
