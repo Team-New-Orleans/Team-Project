@@ -8,9 +8,9 @@ import gameObjects.Health;
 public class HealthGenerator {
 	private long lastTime = System.nanoTime();
 	private long now = System.nanoTime();
-	double delta;
-	Health health;
-	boolean wasInTheList = true;
+	private double delta;
+	private Health health;
+	private boolean wasInTheList = true;
 	
 	public HealthGenerator() {
         health = new Health(new Random().nextInt(600) + 100,new Random().nextInt(400) + 100);
