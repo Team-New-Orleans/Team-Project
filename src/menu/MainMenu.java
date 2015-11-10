@@ -1,15 +1,14 @@
 package menu;
 
-import display.CurrentScore;
 import game.Game;
 import gfx.ImageLoader;
-import org.omg.CORBA.Current;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -125,6 +124,13 @@ public class MainMenu implements ActionListener {
         jframe.add(l);
     }
 
+    public void setLeaderBoard(JLabel l){
+        l.setForeground(Color.white);
+        l.setBounds(200, 160, 400, 400);
+        l.setFont(new Font(fontType, Font.PLAIN, fontSize + 6));
+        panel.add(l);
+        jframe.add(l);
+    }
     public void setLifeBar(JLabel l){
         l.setBackground(Color.GREEN);
         l.setBounds(350,290,200,30);
@@ -160,7 +166,11 @@ public class MainMenu implements ActionListener {
             new Tutorial();
             jframe.dispose();
         } else if(comStr.equals("Leaderboard")){
-            // Go to leaderboard
+            try {
+                new Leaderboard();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else if(comStr.equals("Exit")){
             System.exit(0);
         }

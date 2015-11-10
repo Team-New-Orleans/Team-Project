@@ -1,0 +1,8 @@
+1. ComputerOne - 800pts
+2. ComputerTwo - 700pts
+3. ComputerThree - 600pts
+4. ComputerFour - 500pts
+5. ComputerFive - 400pts
+
+
+
