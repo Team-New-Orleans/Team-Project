@@ -1,8 +1,5 @@
-1. ComputerOne - 800pts
-2. ComputerTwo - 700pts
-3. ComputerThree - 600pts
-4. ComputerFour - 500pts
+1. simooo - 636pts
+2. ComputerOne - 800pts
+3. ComputerTwo - 700pts
+4. ComputerThree - 600pts
 5. ComputerFive - 400pts
-
-
-

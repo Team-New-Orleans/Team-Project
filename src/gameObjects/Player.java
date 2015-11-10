@@ -30,8 +30,8 @@ public class Player extends GameObject{
         this.setVelX(3);
         this.setVelY(2);
 
-        this.setHealth(200);
-        this.setLife(3);
+        this.setHealth(20);
+        this.setLife(0);
         this.setIsDead(false);
 
         this.setAttackDamage(0);

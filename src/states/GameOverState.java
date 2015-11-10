@@ -93,6 +93,7 @@ public class GameOverState extends State implements ActionListener{
                             new FileReader("Resources/Leaderboard.txt"))){
             String playerStats;
             while (!((playerStats=bufferedReader.readLine())==null)){
+                numberOfUsersSaved++;
                 String name = playerStats.split(" ")[1];
                 Pattern pattern = Pattern.compile("\\d{3,}");
                 Matcher matcher = pattern.matcher(playerStats);
@@ -102,12 +103,12 @@ public class GameOverState extends State implements ActionListener{
                     statistics.put(userName, pointsOfUser);
                     userSaved = true;
                 }
-                if(numberOfUsersSaved == 5){
-                    break;
-                }
                 statistics.put(name, points);
+                if(numberOfUsersSaved == 5){
+                    savingNewLeaderBoard(statistics);
+                    return;
+                }
             }
-            savingNewLeaderBoard(statistics);
         } catch (NoSuchElementException ex){
             System.out.print("Leaders not found");
         } catch (IOException e) {
@@ -122,9 +123,13 @@ public class GameOverState extends State implements ActionListener{
                              new FileWriter("Resources/Leaderboard.txt"))){
             for(String user : statistics.keySet()){
                 String stats = String.format("%d. %s - %dpts", index, user, statistics.get(user));
+                if(index == 5){
+                    bufferedWriter.write(stats);
+                } else {
+                    bufferedWriter.write(stats + "\n");
+                }
                 index++;
-                System.out.print(stats);
-                bufferedWriter.write(stats+ "\n");
+
             }
         } catch (IOException e) {
             e.printStackTrace();
