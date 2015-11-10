@@ -58,7 +58,7 @@ public class Leaderboard implements ActionListener {
         StringBuilder results = new StringBuilder();
         try(BufferedReader bufferedReader =
                     new BufferedReader(
-                            new FileReader("C:\\Users\\Simooo\\Desktop\\Team-Project\\The-Undertaker\\Resources\\Leaderboard.txt"))){
+                            new FileReader("Resources/Leaderboard.txt"))){
             String playerStats;
             results.append("<html>");
             while (!((playerStats=bufferedReader.readLine())==null)){
