@@ -10,9 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.NoSuchElementException;
+import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -75,7 +74,6 @@ public class GameOverState extends State implements ActionListener{
         } else if(comStr.equals("Exit")){
             System.exit(0);
         } else if(comStr.equals("Submit")){
-            System.out.print("submit");
             checkingIfTheUserIsInTopFive();
             System.exit(0);
         }
@@ -92,9 +90,11 @@ public class GameOverState extends State implements ActionListener{
                     new BufferedReader(
                             new FileReader("Resources/Leaderboard.txt"))){
             String playerStats;
-            while (!((playerStats=bufferedReader.readLine())==null)){
+            while (!((playerStats=bufferedReader.readLine())== null)){
                 numberOfUsersSaved++;
                 String name = playerStats.split(" ")[1];
+                System.out.println();
+                System.out.println(name);
                 Pattern pattern = Pattern.compile("\\d{3,}");
                 Matcher matcher = pattern.matcher(playerStats);
                 matcher.find();
@@ -102,12 +102,14 @@ public class GameOverState extends State implements ActionListener{
                 if(pointsOfUser > points && !userSaved){
                     statistics.put(userName, pointsOfUser);
                     userSaved = true;
+                    System.out.print("saved now");
                 }
-                statistics.put(name, points);
                 if(numberOfUsersSaved == 5){
                     savingNewLeaderBoard(statistics);
                     return;
                 }
+                statistics.put(name, points);
+
             }
         } catch (NoSuchElementException ex){
             System.out.print("Leaders not found");
@@ -116,7 +118,7 @@ public class GameOverState extends State implements ActionListener{
         }
     }
 
-    private void savingNewLeaderBoard(HashMap<String, Long> statistics) {
+    private void savingNewLeaderBoard(LinkedHashMap<String, Long> statistics) {
         int index = 1;
         try( BufferedWriter bufferedWriter =
                      new BufferedWriter(

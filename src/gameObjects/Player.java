@@ -30,7 +30,7 @@ public class Player extends GameObject{
         this.setVelX(3);
         this.setVelY(2);
 
-        this.setHealth(20);
+        this.setHealth(200);
         this.setLife(0);
         this.setIsDead(false);
 
