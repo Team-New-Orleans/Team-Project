@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f326509-793b-48a7-b9c2-48752d4f0d67" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TestGame/states/GameOverState.class" afterPath="$PROJECT_DIR$/out/production/TestGame/states/GameOverState.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TestGame/gameObjects/Player.class" afterPath="$PROJECT_DIR$/out/production/TestGame/gameObjects/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/GameOverState.java" afterPath="$PROJECT_DIR$/src/states/GameOverState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Resources/Leaderboard.txt" afterPath="$PROJECT_DIR$/Resources/Leaderboard.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TestGame.iws" />
@@ -27,17 +29,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainMenu.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/menu/MainMenu.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2997199">
-              <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
-              <folding>
-                <element signature="method#setFrame#0;class#MainMenu#0" expanded="false" />
-                <element signature="method#setLabel#0;class#MainMenu#0" expanded="false" />
-                <element signature="method#setLifeBar#0;class#MainMenu#0" expanded="false" />
-                <element signature="method#setButton#0;class#MainMenu#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameOverState.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/states/GameOverState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.81005585">
+              <caret line="79" column="24" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,8 +79,8 @@
         <option value="$PROJECT_DIR$/src/game/Launcher.java" />
         <option value="$PROJECT_DIR$/src/gameObjects/Player.java" />
         <option value="$PROJECT_DIR$/src/game/HealthGenerator.java" />
-        <option value="$PROJECT_DIR$/src/states/GameOverState.java" />
         <option value="$PROJECT_DIR$/src/menu/MainMenu.java" />
+        <option value="$PROJECT_DIR$/src/states/GameOverState.java" />
       </list>
     </option>
   </component>
@@ -113,7 +120,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -256,7 +263,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -562,11 +569,12 @@
       <workItem from="1447077755450" duration="11229000" />
       <workItem from="1447092268489" duration="47000" />
       <workItem from="1447102262889" duration="1152000" />
+      <workItem from="1447241899458" duration="382000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20908000" />
+    <option name="totallyTimeSpent" value="21290000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1382" height="728" extended-state="0" />
@@ -580,7 +588,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3551089" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35343385" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -620,11 +628,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/menu/MainMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Launcher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -632,12 +647,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="method#setFrame#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setLabel#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setLifeBar#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setButton#0;class#MainMenu#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -655,7 +665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -663,12 +672,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="30" selection-start-line="74" selection-start-column="30" selection-end-line="74" selection-end-column="30" />
-          <folding>
-            <element signature="method#setFrame#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setLabel#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setLifeBar#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setButton#0;class#MainMenu#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -830,7 +834,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -865,24 +868,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/states/GameOverState.java">
+    <entry file="file://$PROJECT_DIR$/src/menu/MainMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14285715">
-          <caret line="57" column="43" selection-start-line="57" selection-start-column="43" selection-end-line="57" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/MainMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/states/GameOverState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2997199">
-          <caret line="39" column="24" selection-start-line="39" selection-start-column="24" selection-end-line="39" selection-end-column="24" />
-          <folding>
-            <element signature="method#setFrame#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setLabel#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setLifeBar#0;class#MainMenu#0" expanded="false" />
-            <element signature="method#setButton#0;class#MainMenu#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.81005585">
+          <caret line="79" column="24" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>

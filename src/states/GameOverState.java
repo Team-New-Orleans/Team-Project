@@ -3,6 +3,7 @@ package states;
 import game.Game;
 import gfx.ImageLoader;
 import menu.Leaderboard;
+import menu.MainMenu;
 
 import javax.swing.*;
 import java.awt.*;
@@ -75,7 +76,10 @@ public class GameOverState extends State implements ActionListener{
             System.exit(0);
         } else if(comStr.equals("Submit")){
             checkingIfTheUserIsInTopFive();
-            System.exit(0);
+            //System.exit(0);
+            new MainMenu();
+            jframe.dispose();
+
         }
         System.out.println(comStr + " Selected");
     }
