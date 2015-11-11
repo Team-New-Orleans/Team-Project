@@ -106,14 +106,12 @@ public class GameOverState extends State implements ActionListener{
                 if(pointsOfUser > points && !userSaved){
                     statistics.put(userName, pointsOfUser);
                     userSaved = true;
-                    System.out.print("saved now");
                 }
                 if(numberOfUsersSaved == 5){
                     savingNewLeaderBoard(statistics);
                     return;
                 }
                 statistics.put(name, points);
-
             }
         } catch (NoSuchElementException ex){
             System.out.print("Leaders not found");
