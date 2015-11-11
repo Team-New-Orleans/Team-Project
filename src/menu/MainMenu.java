@@ -126,7 +126,7 @@ public class MainMenu implements ActionListener {
 
     public void setLeaderBoard(JLabel l){
         l.setForeground(Color.white);
-        l.setBounds(200, 160, 400, 400);
+        l.setBounds(200, 100, 400, 400);
         l.setFont(new Font(fontType, Font.PLAIN, fontSize + 6));
         panel.add(l);
         jframe.add(l);
